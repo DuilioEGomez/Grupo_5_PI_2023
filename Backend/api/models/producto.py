@@ -7,6 +7,8 @@ class Producto():
         self._precio = row[4]
         self._proveedor = row[5]
         self._proveedor_email = row[6]
+        self._activo = row[7]
+        self._alerta_stock = row[8]
     
     def to_json(self):
         return {
@@ -16,7 +18,9 @@ class Producto():
             "stock_disponible" : self._stock_disponible,
             "precio" : self._precio,
             "proveedor" : self._proveedor,
-            "proveedor_email" : self._proveedor_email
+            "proveedor_email" : self._proveedor_email,
+            "activo" : self._activo,
+            "alerta_stock" : self._alerta_stock
         }
     
     

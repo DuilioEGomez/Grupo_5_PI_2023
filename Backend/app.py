@@ -8,8 +8,8 @@ from functools import wraps
 app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'user_api_flask'
-app.config['MYSQL_PASSWORD'] = 'password'
+app.config['MYSQL_USER'] = 'duilio'
+app.config['MYSQL_PASSWORD'] = 'duilio'
 app.config['MYSQL_DB'] = 'proyecto_informatico'
 
 app.config['SECRET_KEY'] = 'DSP462'
