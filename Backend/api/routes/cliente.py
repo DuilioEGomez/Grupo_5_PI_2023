@@ -4,6 +4,8 @@ from api.models.factura import Factura
 from api.models.producto import Producto
 from api.models.productos_factura import Productos_factura
 from api.models.historial_ventas import Historial
+from api.models.ranking_ventas_por_cliente import Ranking_ventas_por_cliente
+from api.models.ranking_ventas_por_producto import Ranking_ventas_por_producto
 from flask import jsonify
 from api.utils import token_required, client_resource, user_resources
 from api.db.db import mysql
@@ -72,3 +74,29 @@ def get_historial(id_user):
         objHistorial = Historial(row)
         historialList.append(objHistorial.to_json())
     return jsonify({"historial": historialList})
+
+@app.route('/user/<int:id_user>/ranking_clientes', methods = ['GET'])
+@token_required
+@user_resources
+def get_ranking_clientes(id_user):
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT cliente.id, cliente.nombre, cliente.apellido, COUNT(cliente.id) AS ranking_cliente FROM cliente JOIN factura ON cliente.ID = factura.ID_CLIENTE WHERE factura.ID_USUARIO = %s AND cliente.ID_USUARIO = factura.ID_USUARIO GROUP BY cliente.id, cliente.nombre, cliente.apellido ORDER BY ranking_cliente DESC;',(id_user,))
+    data = cur.fetchall()
+    ranking_clientesList = []
+    for row in data:
+        objRanking_clientes = Ranking_ventas_por_cliente(row)
+        ranking_clientesList.append(objRanking_clientes.to_json())
+    return jsonify({"ranking clientes" : ranking_clientesList})
+
+@app.route('/user/<int:id_user>/ranking_productos', methods = ['GET'])
+@token_required
+@user_resources
+def get_ranking_productos(id_user):
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT producto.ID AS producto_id, producto.NOMBRE_PRODUCTO, factura_productos.PRECIO_PRODUCTO, SUM(factura_productos.CANTIDAD) AS total_cantidad FROM factura JOIN usuario ON factura.ID_USUARIO = usuario.id JOIN factura_productos ON factura.ID = factura_productos.ID_FACTURA JOIN producto ON factura_productos.ID_PRODUCTO = producto.ID WHERE usuario.id = %s GROUP BY producto.ID, producto.NOMBRE_PRODUCTO, factura_productos.PRECIO_PRODUCTO ORDER BY total_cantidad DESC;',(id_user,))
+    data = cur.fetchall()
+    ranking_productosList = []
+    for row in data:
+        objRanking_productos = Ranking_ventas_por_producto(row)
+        ranking_productosList.append(objRanking_productos.to_json())
+    return jsonify({"ranking productos" : ranking_productosList})
