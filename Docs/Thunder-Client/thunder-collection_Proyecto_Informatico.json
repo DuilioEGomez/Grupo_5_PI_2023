@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Proyecto_Informatico",
-    "dateExported": "2023-11-06T00:18:53.960Z",
+    "dateExported": "2023-11-06T15:40:36.510Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -100,11 +100,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "Todos los productos de la factura Y del usuario X",
-            "url": "user/1/factura/15",
+            "url": "user/1/factura/20",
             "method": "GET",
             "sortNum": 60000,
             "created": "2023-10-30T01:48:19.441Z",
-            "modified": "2023-11-05T23:57:52.402Z",
+            "modified": "2023-11-06T11:15:20.789Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -185,6 +185,70 @@
                 }
             ],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3b3fa8d9-d471-48fa-929a-bdce27fc026a",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Alta Cliente del Usuario X",
+            "url": "/user/1/client",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2023-11-06T13:41:37.284Z",
+            "modified": "2023-11-06T15:00:15.474Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA3MDQ1MjU1fQ.E3iMNsITnRhLOAwqOxYznSQ9DkNjGnYoNZoaeRY9CFw"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id_usuario\": 1,\n  \"nombre\": \"Test 2\",\n  \"apellido\": \"checking 2\",\n  \"cuit\": \"1342355\"\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "4c7cfa6e-cf7f-4df9-85d1-c02b39f1be97",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "UPDATE Cliente del Usuario X",
+            "url": "/user/1/cliente/48",
+            "method": "PUT",
+            "sortNum": 110000,
+            "created": "2023-11-06T15:22:25.889Z",
+            "modified": "2023-11-06T15:38:26.623Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA3MDU3OTcwfQ.aiZ5qv_B3d5Mrz5WNWLPKcj17fOlV-71_RHtoBphW54"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Julian\",\n  \"apellido\": \"Alvarez\",\n  \"cuit\": \"2222111\"\n}",
+                "form": []
+            },
             "tests": []
         }
     ],

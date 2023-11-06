@@ -6,7 +6,7 @@ from api.models.productos_factura import Productos_factura
 from api.models.historial_ventas import Historial
 from api.models.ranking_ventas_por_cliente import Ranking_ventas_por_cliente
 from api.models.ranking_ventas_por_producto import Ranking_ventas_por_producto
-from flask import jsonify
+from flask import jsonify, request
 from api.utils import token_required, client_resource, user_resources
 from api.db.db import mysql
 
@@ -100,3 +100,37 @@ def get_ranking_productos(id_user):
         objRanking_productos = Ranking_ventas_por_producto(row)
         ranking_productosList.append(objRanking_productos.to_json())
     return jsonify({"ranking productos" : ranking_productosList})
+
+@app.route('/user/<int:id_user>/client', methods = ['POST'])
+@token_required
+@user_resources
+def create_client(id_user):
+    id_usuario = id_user
+    nombre = request.get_json()["nombre"]
+    apellido = request.get_json()["apellido"]
+    cuit = request.get_json()["cuit"]
+    cur = mysql.connection.cursor()
+    cur.execute('INSERT INTO `cliente` (`ID`, `ID_USUARIO`, `NOMBRE`, `APELLIDO`, `CUIT`, `activo`) VALUES (NULL, %s, %s, %s, %s, %s);',(id_usuario, nombre, apellido, cuit, 1))
+    mysql.connection.commit()
+    cur.close()
+    #mysql.connection.close()
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT LAST_INSERT_ID()')
+    row = cur.fetchone()
+    id = row[0]
+    # #print("ultimo Indice", row[0])
+    return jsonify({"id": id, "id_usuario": id_usuario, "nombre": nombre, "apellido": apellido, "cuit": cuit})
+
+@app.route('/user/<int:id_user>/cliente/<int:id_client>', methods = ['PUT'])
+@token_required
+@user_resources
+def update_client(id_user, id_client):
+    id_cliente = id_client
+    id_usuario = id_user
+    nombre = request.get_json()["nombre"]
+    apellido = request.get_json()["apellido"]
+    cuit = request.get_json()["cuit"]
+    cur = mysql.connection.cursor()
+    cur.execute('UPDATE cliente SET nombre = %s, apellido = %s, cuit = %s WHERE cliente.ID = %s AND cliente.ID_USUARIO = %s',(nombre,apellido, cuit, id_cliente, id_usuario))
+    mysql.connection.commit()
+    return jsonify({"id": id_cliente, "id_usuario": id_usuario, "nombre": nombre, "apellido": apellido, "cuit": cuit})
