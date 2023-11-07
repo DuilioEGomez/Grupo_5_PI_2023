@@ -112,13 +112,11 @@ def create_client(id_user):
     cur = mysql.connection.cursor()
     cur.execute('INSERT INTO `cliente` (`ID`, `ID_USUARIO`, `NOMBRE`, `APELLIDO`, `CUIT`, `activo`) VALUES (NULL, %s, %s, %s, %s, %s);',(id_usuario, nombre, apellido, cuit, 1))
     mysql.connection.commit()
-    cur.close()
-    #mysql.connection.close()
+    cur.close()  
     cur = mysql.connection.cursor()
     cur.execute('SELECT LAST_INSERT_ID()')
     row = cur.fetchone()
     id = row[0]
-    # #print("ultimo Indice", row[0])
     return jsonify({"id": id, "id_usuario": id_usuario, "nombre": nombre, "apellido": apellido, "cuit": cuit})
 
 @app.route('/user/<int:id_user>/cliente/<int:id_client>', methods = ['PUT'])
