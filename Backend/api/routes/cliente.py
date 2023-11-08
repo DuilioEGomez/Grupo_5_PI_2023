@@ -6,6 +6,7 @@ from api.models.productos_factura import Productos_factura
 from api.models.historial_ventas import Historial
 from api.models.ranking_ventas_por_cliente import Ranking_ventas_por_cliente
 from api.models.ranking_ventas_por_producto import Ranking_ventas_por_producto
+from api.models.ranking_ventas_por_servicio import Ranking_ventas_por_servicio
 from flask import jsonify, request
 from api.utils import token_required, client_resource, user_resources
 from api.db.db import mysql
@@ -100,6 +101,19 @@ def get_ranking_productos(id_user):
         objRanking_productos = Ranking_ventas_por_producto(row)
         ranking_productosList.append(objRanking_productos.to_json())
     return jsonify({"ranking productos" : ranking_productosList})
+
+@app.route('/user/<int:id_user>/ranking_servicios', methods = ['GET'])
+@token_required
+@user_resources
+def get_ranking_servicios(id_user):
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT servicio.ID AS servicio_id, servicio.NOMBRE_SERVICIO, factura_servicios.PRECIO_SERVICIO, SUM(factura_servicios.CANTIDAD) AS total_cantidad FROM factura JOIN usuario ON factura.ID_USUARIO = usuario.id JOIN factura_servicios ON factura.ID = factura_servicios.ID_FACTURA JOIN servicio ON factura_servicios.ID_SERVICIO = servicio.ID WHERE usuario.id = %s GROUP BY servicio.ID, servicio.NOMBRE_SERVICIO, factura_servicios.PRECIO_SERVICIO ORDER BY total_cantidad DESC;',(id_user,))
+    data = cur.fetchall()
+    ranking_serviciosList = []
+    for row in data:
+        objRanking_servicios = Ranking_ventas_por_servicio(row)
+        ranking_serviciosList.append(objRanking_servicios.to_json())
+    return jsonify({"ranking servicios" : ranking_serviciosList})
 
 @app.route('/user/<int:id_user>/client', methods = ['POST'])
 @token_required
