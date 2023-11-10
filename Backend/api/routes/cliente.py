@@ -119,30 +119,23 @@ def get_ranking_servicios(id_user):
 @token_required
 @user_resources
 def create_client(id_user):
-    id_usuario = id_user
-    nombre = request.get_json()["nombre"]
-    apellido = request.get_json()["apellido"]
-    cuit = request.get_json()["cuit"]
-    cur = mysql.connection.cursor()
-    cur.execute('INSERT INTO `cliente` (`ID`, `ID_USUARIO`, `NOMBRE`, `APELLIDO`, `CUIT`, `activo`) VALUES (NULL, %s, %s, %s, %s, %s);',(id_usuario, nombre, apellido, cuit, 1))
-    mysql.connection.commit()
-    cur.close()  
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT LAST_INSERT_ID()')
-    row = cur.fetchone()
-    id = row[0]
-    return jsonify({"id": id, "id_usuario": id_usuario, "nombre": nombre, "apellido": apellido, "cuit": cuit})
+    data = request.get_json()
+    data["id_usuario"] = id_user
+    try:
+        nuevo_cliente = Cliente.crear_cliente(data)
+        return jsonify(nuevo_cliente), 201
+    except Exception as e:
+        return jsonify({"message": e.args[0]}), 400
 
 @app.route('/user/<int:id_user>/cliente/<int:id_client>', methods = ['PUT'])
 @token_required
 @user_resources
 def update_client(id_user, id_client):
-    id_cliente = id_client
-    id_usuario = id_user
-    nombre = request.get_json()["nombre"]
-    apellido = request.get_json()["apellido"]
-    cuit = request.get_json()["cuit"]
-    cur = mysql.connection.cursor()
-    cur.execute('UPDATE cliente SET nombre = %s, apellido = %s, cuit = %s WHERE cliente.ID = %s AND cliente.ID_USUARIO = %s',(nombre,apellido, cuit, id_cliente, id_usuario))
-    mysql.connection.commit()
-    return jsonify({"id": id_cliente, "id_usuario": id_usuario, "nombre": nombre, "apellido": apellido, "cuit": cuit})
+    data = request.get_json()
+    data["id_usuario"]= id_user
+    data["id"] = id_client
+    try:
+        update_client = Cliente.actualizar_cliente(id_user, id_client, data)
+        return jsonify(update_client)
+    except Exception as e:
+        return jsonify({"message": e.args[0]}), 400
