@@ -3,7 +3,7 @@ from api.db.db import DBError
 
 class Cliente():
     schema = {
-        "id" : int,
+        #"id" : int,
         "id_usuario" : int,
         "nombre" : str,
         "apellido" : str,
