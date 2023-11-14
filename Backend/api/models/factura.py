@@ -65,11 +65,11 @@ class Factura():
      def actualizar_factura(id_user, id_factura, data):
         if Factura.check_data_schema(data):
             id_usuario = id_user
-            id_cliente = id_factura
+            id_cliente = data["id_cliente"]
             fecha_factura = data["fecha_factura"]
             id_factura = data["id"]
             cur = mysql.connection.cursor()
-            cur.execute('UPDATE factura SET fecha_factura = %s, id_usuario = %s, id_cliente = %s WHERE factura.ID = %s AND factura.ID_USUARIO = %s',(fecha_factura, id_usuario, id_cliente, id_factura, id_usuario))   
+            cur.execute('UPDATE factura SET id_usuario = %s, id_cliente = %s, fecha_factura = %s WHERE factura.ID = %s AND factura.ID_USUARIO = %s',(id_usuario, id_cliente,fecha_factura, id_factura, id_usuario))   
             mysql.connection.commit()
             if cur.rowcount > 0:
                 return Factura.get_factura_by_ID(id_factura)
