@@ -42,16 +42,18 @@ def client_resource(func):
     @wraps(func)
     def decorated(*args, **kwargs):
         print("Argumentos en client_resource: ", kwargs)
+        id_usuario = kwargs['id_user']
         id_cliente = kwargs['id_client']
         cur = mysql.connection.cursor()
-        cur.execute('SELECT id_user FROM cliente WHERE id = {0}'.format(id_cliente)) 
-        data = cur.fetchone()
-        if data:
-            """ print(data) """
-            id_prop = data[0]
-            user_id = request.headers['user-id']
-            if int(id_prop) != int(user_id):
-                return jsonify({"message": "No tiene permisos para acceder a este recurso"}), 401
+        cur.execute('SELECT * FROM cliente WHERE cliente.ID = %s and cliente.ID_USUARIO = %s;',(id_cliente, id_usuario)) 
+        #data = cur.fetchone()
+        if not cur.rowcount > 0:
+            # """print(data)"""
+            # consulta1 = data[0]
+            # consulta2 = data[1]
+            # user_id = request.headers['user-id']
+            # if cur.rowcount >
+            return jsonify({"message": "No tiene permisos para acceder a este recurso"}), 401
         return func(*args, **kwargs)
     return decorated
 

@@ -1,5 +1,6 @@
 from api.db.db import mysql
 from api.db.db import DBError
+from flask import jsonify
 
 class Cliente():
     schema = {
@@ -72,10 +73,12 @@ class Cliente():
             apellido = data["apellido"]
             cuit = data["cuit"]
             cur = mysql.connection.cursor()
-            cur.execute('UPDATE cliente SET nombre = %s, apellido = %s, cuit = %s WHERE cliente.ID = %s AND cliente.ID_USUARIO = %s',(nombre,apellido, cuit, id_cliente, id_usuario))   
+            cur.execute('UPDATE cliente SET nombre = %s, apellido = %s, cuit = %s WHERE cliente.ID = %s AND cliente.ID_USUARIO = %s AND cliente.ACTIVO = 1',(nombre,apellido, cuit, id_cliente, id_usuario))   
             mysql.connection.commit()
             if cur.rowcount > 0:
                 return Cliente.get_cliente_by_ID(id_cliente)
+            else:
+                raise DBError("No se pudo actualizar el cliente")
 
     def get_cliente_by_ID(id_cliente):
         cur = mysql.connection.cursor()
@@ -85,5 +88,18 @@ class Cliente():
             return Cliente(data[0]).to_json()
         raise DBError("Error obtiendo la ID del Cliente")
 
-
-    
+    def delete_client(id_user, id_cliente):
+        #id_usuario = id_user
+        id_cliente = id_cliente
+        #nombre = data["nombre"]
+        #apellido = data["apellido"]
+        #cuit = data["cuit"]
+        cur = mysql.connection.cursor()
+        cur.execute('UPDATE cliente SET ACTIVO = 0 WHERE cliente.ID = %s AND cliente.ID_USUARIO = %s;',(id_cliente, id_user))
+        mysql.connection.commit()
+        data = cur.fetchall()
+        if cur.rowcount > 0:
+            #return Cliente(data[0]).to_json()
+            mensaje = "El cliente fue borrado correctamente"
+            return jsonify({"message" : mensaje})
+        raise DBError("Error borrando cliente")
