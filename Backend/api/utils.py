@@ -68,3 +68,15 @@ def user_resources(func):
         return func(*args, **kwargs)
     return decorated
 
+def factura_resources(func):
+    @wraps(func)
+    def decorated(*args, **kwargs):
+        print("Argumentos en factura_resources: ", kwargs)
+        id_factura = kwargs['id_factura']
+        id_usuario = kwargs['id_user']
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM factura WHERE factura.ID = %s AND factura.ID_USUARIO = %s;',(id_factura, id_usuario)) 
+        if not cur.rowcount > 0:
+            return jsonify({"message": "No tiene permisos para acceder a este recurso"}), 401
+        return func(*args, **kwargs)
+    return decorated

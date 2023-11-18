@@ -64,16 +64,18 @@ class Factura_productos():
     def update_factura_productos(id_factura, data):
         if Factura_productos.check_data_schema(data):
             cur = mysql.connection.cursor()
-            cur.execute('UPDATE factura_productos SET ID_PRODUCTO = %s, CANTIDAD =%s, PRECIO_PRODUCTO = %s WHERE factura_productos.ID_FACTURA = %s;',(data["id_producto"], data["cantidad"], data["precio_producto"], data["id_factura"]))
+            cur.execute('UPDATE factura_productos SET factura_productos.CANTIDAD = %s, factura_productos.PRECIO_PRODUCTO = %s WHERE factura_productos.ID_FACTURA = %s AND factura_productos.ID_PRODUCTO = %s;',(data["cantidad"], data["precio_producto"], data["id_factura"],data["id_producto"]))
             mysql.connection.commit()
-            if cur.rowncount > 0:
-                return Factura_productos.get_factura_productos_by_id(id_factura)
+            id_producto = data["id_producto"]
+            print("ID PRODCUTO", id_producto)
+            if cur.rowcount > 0:
+                return Factura_productos.get_factura_productos_by_id(id_factura, id_producto)
             raise DBError("ERROR actualizando Factura Productos - No se actualizo la fila")
         raise DBError("ERROR Actualizando Factura Productos - esquema incorrecto")
 
-    def get_factura_productos_by_id(id_factura):
+    def get_factura_productos_by_id(id_factura, id_producto):
         cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM factura_productos WHERE factura_productos.ID_FACTURA = %s;',(id_factura,))
+        cur.execute('SELECT * FROM factura_productos WHERE factura_productos.ID_FACTURA = %s AND factura_productos.ID_PRODUCTO = %s;',(id_factura, id_producto))
         data = cur.fetchall()
         if cur.rowcount > 0:
             return Factura_productos(data[0]).to_json()

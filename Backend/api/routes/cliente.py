@@ -146,9 +146,6 @@ def update_client(id_user, id_client):
 @user_resources
 @client_resource
 def delete_client(id_user, id_client):
-    # data = request.get_json()
-    # data["id_usuario"]= id_user
-    # data["id"] = id_client
     try:
         delete_client = Cliente.delete_client(id_user, id_client)
         return delete_client
