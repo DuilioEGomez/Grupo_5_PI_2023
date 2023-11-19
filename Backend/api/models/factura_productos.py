@@ -67,7 +67,6 @@ class Factura_productos():
             cur.execute('UPDATE factura_productos SET factura_productos.CANTIDAD = %s, factura_productos.PRECIO_PRODUCTO = %s WHERE factura_productos.ID_FACTURA = %s AND factura_productos.ID_PRODUCTO = %s;',(data["cantidad"], data["precio_producto"], data["id_factura"],data["id_producto"]))
             mysql.connection.commit()
             id_producto = data["id_producto"]
-            print("ID PRODCUTO", id_producto)
             if cur.rowcount > 0:
                 return Factura_productos.get_factura_productos_by_id(id_factura, id_producto)
             raise DBError("ERROR actualizando Factura Productos - No se actualizo la fila")

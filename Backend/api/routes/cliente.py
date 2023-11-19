@@ -5,8 +5,8 @@ from api.models.producto import Producto
 from api.models.productos_factura import Productos_factura
 from api.models.historial_ventas import Historial
 from api.models.ranking_ventas_por_cliente import Ranking_ventas_por_cliente
-from api.models.ranking_ventas_por_producto import Ranking_ventas_por_producto
-from api.models.ranking_ventas_por_servicio import Ranking_ventas_por_servicio
+# from api.models.ranking_ventas_por_producto import Ranking_ventas_por_producto
+# from api.models.ranking_ventas_por_servicio import Ranking_ventas_por_servicio
 from flask import jsonify, request
 from api.utils import token_required, client_resource, user_resources
 from api.db.db import mysql
@@ -24,44 +24,44 @@ def get_all_clients_by_user_id(id_user):
         clientList.append(objClient.to_json())
     return jsonify({"clientes" : clientList})
 
-@app.route('/user/<int:id_user>/facturas', methods = ['GET'])
-@token_required
-@user_resources
-def get_facturas_by_user_id(id_user):
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM factura, usuario WHERE usuario.ID = %s AND factura.ID_USUARIO = %s;',(id_user, id_user))
-    data = cur.fetchall()
-    facturaList = []
-    for row in data:
-        objFactura = Factura(row)
-        facturaList.append(objFactura.to_json())
-    return jsonify({"facturas" : facturaList})
+# @app.route('/user/<int:id_user>/facturas', methods = ['GET'])
+# @token_required
+# @user_resources
+# def get_facturas_by_user_id(id_user):
+#     cur = mysql.connection.cursor()
+#     cur.execute('SELECT * FROM factura, usuario WHERE usuario.ID = %s AND factura.ID_USUARIO = %s;',(id_user, id_user))
+#     data = cur.fetchall()
+#     facturaList = []
+#     for row in data:
+#         objFactura = Factura(row)
+#         facturaList.append(objFactura.to_json())
+#     return jsonify({"facturas" : facturaList})
 
-@app.route('/user/<int:id_user>/stock', methods = ['GET'])
-@token_required
-@user_resources
-def get_product_by_user_id(id_user):
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT * from producto where producto.ID_USUARIO = {0}'.format(id_user))
-    data = cur.fetchall()
-    productosList = []
-    for row in data:
-        objProductos = Producto(row)
-        productosList.append(objProductos.to_json())
-    return jsonify({"stock" : productosList})
+# @app.route('/user/<int:id_user>/stock', methods = ['GET'])
+# @token_required
+# @user_resources
+# def get_product_by_user_id(id_user):
+#     cur = mysql.connection.cursor()
+#     cur.execute('SELECT * from producto where producto.ID_USUARIO = {0}'.format(id_user))
+#     data = cur.fetchall()
+#     productosList = []
+#     for row in data:
+#         objProductos = Producto(row)
+#         productosList.append(objProductos.to_json())
+#     return jsonify({"stock" : productosList})
 
-@app.route('/user/<int:id_user>/factura/<int:id_factura>', methods = ['GET'])
-@token_required
-@user_resources
-def get_factura_by_user(id_user, id_factura):
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT DISTINCT factura_productos.*, producto.*, cliente.*, factura.* FROM factura_productos INNER JOIN producto ON factura_productos.ID_PRODUCTO = producto.ID INNER JOIN factura ON factura_productos.ID_FACTURA = factura.ID INNER JOIN cliente ON factura.ID_CLIENTE = cliente.ID WHERE factura.ID_USUARIO = %s AND factura_productos.ID_FACTURA = %s;',(id_user, id_factura))
-    data = cur.fetchall()
-    productos_facturaList = []
-    for row in data:
-        objProductos_factura = Productos_factura(row)
-        productos_facturaList.append(objProductos_factura.to_json())
-    return jsonify({"facturas" : productos_facturaList})
+# @app.route('/user/<int:id_user>/factura/<int:id_factura>', methods = ['GET'])
+# @token_required
+# @user_resources
+# def get_factura_by_user(id_user, id_factura):
+#     cur = mysql.connection.cursor()
+#     cur.execute('SELECT DISTINCT factura_productos.*, producto.*, cliente.*, factura.* FROM factura_productos INNER JOIN producto ON factura_productos.ID_PRODUCTO = producto.ID INNER JOIN factura ON factura_productos.ID_FACTURA = factura.ID INNER JOIN cliente ON factura.ID_CLIENTE = cliente.ID WHERE factura.ID_USUARIO = %s AND factura_productos.ID_FACTURA = %s;',(id_user, id_factura))
+#     data = cur.fetchall()
+#     productos_facturaList = []
+#     for row in data:
+#         objProductos_factura = Productos_factura(row)
+#         productos_facturaList.append(objProductos_factura.to_json())
+#     return jsonify({"facturas" : productos_facturaList})
 
 @app.route('/user/<int:id_user>/historial', methods= ['GET'])
 @token_required
@@ -89,31 +89,31 @@ def get_ranking_clientes(id_user):
         ranking_clientesList.append(objRanking_clientes.to_json())
     return jsonify({"ranking clientes" : ranking_clientesList})
 
-@app.route('/user/<int:id_user>/ranking_productos', methods = ['GET'])
-@token_required
-@user_resources
-def get_ranking_productos(id_user):
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT producto.ID AS producto_id, producto.NOMBRE_PRODUCTO, factura_productos.PRECIO_PRODUCTO, SUM(factura_productos.CANTIDAD) AS total_cantidad FROM factura JOIN usuario ON factura.ID_USUARIO = usuario.id JOIN factura_productos ON factura.ID = factura_productos.ID_FACTURA JOIN producto ON factura_productos.ID_PRODUCTO = producto.ID WHERE usuario.id = %s GROUP BY producto.ID, producto.NOMBRE_PRODUCTO, factura_productos.PRECIO_PRODUCTO ORDER BY total_cantidad DESC;',(id_user,))
-    data = cur.fetchall()
-    ranking_productosList = []
-    for row in data:
-        objRanking_productos = Ranking_ventas_por_producto(row)
-        ranking_productosList.append(objRanking_productos.to_json())
-    return jsonify({"ranking productos" : ranking_productosList})
+# @app.route('/user/<int:id_user>/ranking_productos', methods = ['GET'])
+# @token_required
+# @user_resources
+# def get_ranking_productos(id_user):
+#     cur = mysql.connection.cursor()
+#     cur.execute('SELECT producto.ID AS producto_id, producto.NOMBRE_PRODUCTO, factura_productos.PRECIO_PRODUCTO, SUM(factura_productos.CANTIDAD) AS total_cantidad FROM factura JOIN usuario ON factura.ID_USUARIO = usuario.id JOIN factura_productos ON factura.ID = factura_productos.ID_FACTURA JOIN producto ON factura_productos.ID_PRODUCTO = producto.ID WHERE usuario.id = %s GROUP BY producto.ID, producto.NOMBRE_PRODUCTO, factura_productos.PRECIO_PRODUCTO ORDER BY total_cantidad DESC;',(id_user,))
+#     data = cur.fetchall()
+#     ranking_productosList = []
+#     for row in data:
+#         objRanking_productos = Ranking_ventas_por_producto(row)
+#         ranking_productosList.append(objRanking_productos.to_json())
+#     return jsonify({"ranking productos" : ranking_productosList})
 
-@app.route('/user/<int:id_user>/ranking_servicios', methods = ['GET'])
-@token_required
-@user_resources
-def get_ranking_servicios(id_user):
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT servicio.ID AS servicio_id, servicio.NOMBRE_SERVICIO, factura_servicios.PRECIO_SERVICIO, SUM(factura_servicios.CANTIDAD) AS total_cantidad FROM factura JOIN usuario ON factura.ID_USUARIO = usuario.id JOIN factura_servicios ON factura.ID = factura_servicios.ID_FACTURA JOIN servicio ON factura_servicios.ID_SERVICIO = servicio.ID WHERE usuario.id = %s GROUP BY servicio.ID, servicio.NOMBRE_SERVICIO, factura_servicios.PRECIO_SERVICIO ORDER BY total_cantidad DESC;',(id_user,))
-    data = cur.fetchall()
-    ranking_serviciosList = []
-    for row in data:
-        objRanking_servicios = Ranking_ventas_por_servicio(row)
-        ranking_serviciosList.append(objRanking_servicios.to_json())
-    return jsonify({"ranking servicios" : ranking_serviciosList})
+# @app.route('/user/<int:id_user>/ranking_servicios', methods = ['GET'])
+# @token_required
+# @user_resources
+# def get_ranking_servicios(id_user):
+#     cur = mysql.connection.cursor()
+#     cur.execute('SELECT servicio.ID AS servicio_id, servicio.NOMBRE_SERVICIO, factura_servicios.PRECIO_SERVICIO, SUM(factura_servicios.CANTIDAD) AS total_cantidad FROM factura JOIN usuario ON factura.ID_USUARIO = usuario.id JOIN factura_servicios ON factura.ID = factura_servicios.ID_FACTURA JOIN servicio ON factura_servicios.ID_SERVICIO = servicio.ID WHERE usuario.id = %s GROUP BY servicio.ID, servicio.NOMBRE_SERVICIO, factura_servicios.PRECIO_SERVICIO ORDER BY total_cantidad DESC;',(id_user,))
+#     data = cur.fetchall()
+#     ranking_serviciosList = []
+#     for row in data:
+#         objRanking_servicios = Ranking_ventas_por_servicio(row)
+#         ranking_serviciosList.append(objRanking_servicios.to_json())
+#     return jsonify({"ranking servicios" : ranking_serviciosList})
 
 @app.route('/user/<int:id_user>/client', methods = ['POST'])
 @token_required

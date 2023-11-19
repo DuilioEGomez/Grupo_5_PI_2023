@@ -89,17 +89,12 @@ class Cliente():
         raise DBError("Error obtiendo la ID del Cliente")
 
     def delete_client(id_user, id_cliente):
-        #id_usuario = id_user
         id_cliente = id_cliente
-        #nombre = data["nombre"]
-        #apellido = data["apellido"]
-        #cuit = data["cuit"]
         cur = mysql.connection.cursor()
         cur.execute('UPDATE cliente SET ACTIVO = 0 WHERE cliente.ID = %s AND cliente.ID_USUARIO = %s;',(id_cliente, id_user))
         mysql.connection.commit()
         data = cur.fetchall()
         if cur.rowcount > 0:
-            #return Cliente(data[0]).to_json()
             mensaje = "El cliente fue borrado correctamente"
             return jsonify({"message" : mensaje})
         raise DBError("Error borrando cliente")
