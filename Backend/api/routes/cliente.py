@@ -16,7 +16,7 @@ from api.db.db import mysql
 @user_resources
 def get_all_clients_by_user_id(id_user):
     cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM cliente WHERE id_usuario = {0}'.format(id_user))
+    cur.execute('SELECT * FROM cliente WHERE id_usuario = %s AND activo = 1;',(id_user,))
     data = cur.fetchall()
     clientList = []
     for row in data:

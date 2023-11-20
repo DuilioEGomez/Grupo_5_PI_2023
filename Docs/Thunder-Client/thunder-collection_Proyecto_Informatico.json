@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Proyecto_Informatico",
-    "dateExported": "2023-11-06T15:40:36.510Z",
+    "dateExported": "2023-11-20T16:51:26.538Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -14,8 +14,17 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2023-10-24T00:53:05.681Z",
-            "modified": "2023-11-05T23:55:29.095Z",
-            "headers": [],
+            "modified": "2023-11-18T22:14:06.719Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4MTA5NDYzfQ.nAgPMfje-tdaJmVA2HL5YWLOujMhLYPmcOHrPhyyNno"
+                }
+            ],
             "params": [],
             "auth": {
                 "type": "basic",
@@ -76,7 +85,7 @@
             "_id": "44201f91-2e25-4f77-b80d-69eb3ce8f1bd",
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
-            "name": "Todos el stock del usuario X",
+            "name": "Todo el stock del Usuario X",
             "url": "/user/1/stock",
             "method": "GET",
             "sortNum": 50000,
@@ -188,6 +197,29 @@
             "tests": []
         },
         {
+            "_id": "392583d1-298c-4451-b271-3f90355e5ffe",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Ranking Servicios por Usuario",
+            "url": "/user/1/ranking_servicios",
+            "method": "GET",
+            "sortNum": 95000,
+            "created": "2023-11-08T19:46:11.432Z",
+            "modified": "2023-11-08T19:47:37.432Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA3MjQ4ODE4fQ.AAxxggQJ2ZQiZthl40Z64nTnsxgm9Y_rhQbzoFBdtFo"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
             "_id": "3b3fa8d9-d471-48fa-929a-bdce27fc026a",
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
@@ -196,7 +228,7 @@
             "method": "POST",
             "sortNum": 100000,
             "created": "2023-11-06T13:41:37.284Z",
-            "modified": "2023-11-06T15:00:15.474Z",
+            "modified": "2023-11-20T16:48:49.384Z",
             "headers": [
                 {
                     "name": "Content-Type",
@@ -214,7 +246,7 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"id_usuario\": 1,\n  \"nombre\": \"Test 2\",\n  \"apellido\": \"checking 2\",\n  \"cuit\": \"1342355\"\n  }",
+                "raw": "{\n  \"id_usuario\": 1,\n  \"nombre\": \"Test 11\",\n  \"apellido\": \"BORRARR\",\n  \"cuit\": 1984587\n  }",
                 "form": []
             },
             "tests": []
@@ -224,11 +256,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "UPDATE Cliente del Usuario X",
-            "url": "/user/1/cliente/48",
+            "url": "/user/1/cliente/57",
             "method": "PUT",
             "sortNum": 110000,
             "created": "2023-11-06T15:22:25.889Z",
-            "modified": "2023-11-06T15:38:26.623Z",
+            "modified": "2023-11-20T16:50:13.253Z",
             "headers": [
                 {
                     "name": "Content-Type",
@@ -246,9 +278,334 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre\": \"Julian\",\n  \"apellido\": \"Alvarez\",\n  \"cuit\": \"2222111\"\n}",
+                "raw": "{ \n  \"nombre\": \"NO se debe VER\",\n  \"apellido\": \"DELETE\",\n  \"cuit\": 1984587\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "db95fb6d-21e5-43c1-8a1e-89dfc055afc5",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Alta Factura del Usuario X",
+            "url": "/user/1/factura",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2023-11-13T17:44:18.599Z",
+            "modified": "2023-11-14T10:12:46.661Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA3NjczNDg4fQ.tvQyL5hQM02adLJoVTQpPz6KDZg3_he4o749-r2GEqo"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"id_usuario\" : 1,\n \"id_cliente\" : 30,\n \"fecha_factura\" : \"2023-11-13\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e3f77c95-1bf0-4554-9db9-55d78c40355d",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Actualizar Factura Y del Usuario X",
+            "url": "/user/1/factura/27",
+            "method": "PUT",
+            "sortNum": 130000,
+            "created": "2023-11-14T10:24:03.752Z",
+            "modified": "2023-11-14T20:50:59.791Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA3NzMzNTIwfQ.fNUaa_SmzyvTuZQ1Kwpxxfw0qXngkcNUT559MXDXjUw"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id_usuario\" : 1,\n  \"id_cliente\" : 30,\n  \"fecha_factura\" : \"2023-11-13\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b5bd1e88-e851-4f9c-acbf-79ae87e50dbe",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Borrar Cliente Y del Usuario X",
+            "url": "/user/1/cliente/57",
+            "method": "DELETE",
+            "sortNum": 140000,
+            "created": "2023-11-14T20:19:53.377Z",
+            "modified": "2023-11-20T16:50:40.779Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA3NzY5MzAyfQ.XHPohBT1KUuV79fcOgMsoHlx-Z2w6ocdJa3zdsQ4kno"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d00748d1-cabb-4a0b-b973-5b8c6b6a15c6",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Nuevo Producto a la Factura F del Usuario X",
+            "url": "/user/1/factura/15/factura_productos",
+            "method": "POST",
+            "sortNum": 160000,
+            "created": "2023-11-15T00:55:01.491Z",
+            "modified": "2023-11-18T18:00:18.924Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA3NzY5MzAyfQ.XHPohBT1KUuV79fcOgMsoHlx-Z2w6ocdJa3zdsQ4kno"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id_producto\" : 27,\n  \"cantidad\" : 1,\n  \"precio_producto\" : 7540000.75\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d93bbf82-8017-4472-aaf9-454daf4c4880",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Update Factura F del Usuario X",
+            "url": "/user/1/factura/15/factura_productos",
+            "method": "PUT",
+            "sortNum": 170000,
+            "created": "2023-11-18T18:50:36.029Z",
+            "modified": "2023-11-18T19:28:56.004Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4MTA5NDYzfQ.nAgPMfje-tdaJmVA2HL5YWLOujMhLYPmcOHrPhyyNno"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"cantidad\" : 4,\n \"id_producto\" : 27,\n \"precio_producto\" : 7666333.33\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9066ab98-548b-4f30-a249-8dc6bd8d2017",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Alta Servicio del Usuario X",
+            "url": "/user/1/servicios",
+            "method": "POST",
+            "sortNum": 180000,
+            "created": "2023-11-18T22:11:37.942Z",
+            "modified": "2023-11-18T22:59:22.240Z",
+            "headers": [
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4MTIxNjUzfQ.B2-6ucq8jJ6RB2hWhCXCqMCaV6BdwCXtcxGcnupAhKI"
+                },
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id_usuario\" : 1,\n  \"nombre_servicio\" : \"Desde Thunder Client\",\n  \"precio\" : 35644.87\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "08a85f06-0b6b-4239-9e45-432cb85bd0f1",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Actualizar Servicio S del Usuario X",
+            "url": "/user/1/servicios/14",
+            "method": "PUT",
+            "sortNum": 190000,
+            "created": "2023-11-18T23:08:36.366Z",
+            "modified": "2023-11-18T23:11:25.098Z",
+            "headers": [
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4MTIxNjUzfQ.B2-6ucq8jJ6RB2hWhCXCqMCaV6BdwCXtcxGcnupAhKI"
+                },
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre_servicio\" : \"Edited From Thunder C\",\n  \"precio\" : 44422.00\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9fadd66c-b971-4049-b8e5-516528335a86",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Delete Servicio S del Usuario X",
+            "url": "/user/1/servicio/13",
+            "method": "DELETE",
+            "sortNum": 200000,
+            "created": "2023-11-18T23:12:16.412Z",
+            "modified": "2023-11-18T23:20:05.252Z",
+            "headers": [
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4MTIxNjUzfQ.B2-6ucq8jJ6RB2hWhCXCqMCaV6BdwCXtcxGcnupAhKI"
+                },
+                {
+                    "name": "user-id",
+                    "value": "1"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1d5bbd4e-8db8-416e-86ee-15f12988261f",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Alta Producto del Usuario X",
+            "url": "/user/1/producto",
+            "method": "POST",
+            "sortNum": 210000,
+            "created": "2023-11-20T13:01:14.658Z",
+            "modified": "2023-11-20T16:39:11.811Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4MjYxMjE1fQ.eDB-SomeO379d4WfJR4VO-QKL3DvHT-4RuPgP2fGcKg"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id_usuario\" : 1,\n  \"nombre_producto\" : \"A BORRARRR\",\n  \"stock_disponible\" : 12,\n  \"precio\" : 777999.53,\n  \"proveedor\" : \"DELETE SYSTEMS\",\n  \"proveedor_email\" : \"sales@delete.com\",\n  \"alerta_stock\" : 7\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9952a325-3be8-4106-8b89-71d1d2edae39",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Update Producto P del Usuario X",
+            "url": "/user/1/producto/26",
+            "method": "PUT",
+            "sortNum": 220000,
+            "created": "2023-11-20T16:19:23.985Z",
+            "modified": "2023-11-20T16:33:31.874Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4MjYxMjE1fQ.eDB-SomeO379d4WfJR4VO-QKL3DvHT-4RuPgP2fGcKg"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre_producto\" : \"Microfono Dinamico SHURE SM58\",\n  \"stock_disponible\" : 25,\n  \"precio\" : 8799.99,\n  \"proveedor\" : \"SHURE\",\n  \"proveedor_email\" : \"sales@shure.com\",\n  \"alerta_stock\" : 6\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "8b4f9269-ba15-4aa1-b710-aca7c21d2680",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Delete Producto P del Usuario X",
+            "url": "/user/1/producto/32",
+            "method": "DELETE",
+            "sortNum": 230000,
+            "created": "2023-11-20T16:39:49.439Z",
+            "modified": "2023-11-20T16:40:48.047Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4MjYxMjE1fQ.eDB-SomeO379d4WfJR4VO-QKL3DvHT-4RuPgP2fGcKg"
+                }
+            ],
+            "params": [],
             "tests": []
         }
     ],
