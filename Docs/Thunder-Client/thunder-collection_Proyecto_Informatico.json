@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Proyecto_Informatico",
-    "dateExported": "2023-11-20T16:51:26.538Z",
+    "dateExported": "2023-11-22T00:58:47.645Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -40,11 +40,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "todos los clientes del usuario X",
-            "url": "/user/1/client",
+            "url": "/user/1/cliente",
             "method": "GET",
             "sortNum": 20000,
             "created": "2023-10-28T08:39:13.102Z",
-            "modified": "2023-11-05T23:56:08.630Z",
+            "modified": "2023-11-21T21:35:17.543Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -379,7 +379,7 @@
             "method": "POST",
             "sortNum": 160000,
             "created": "2023-11-15T00:55:01.491Z",
-            "modified": "2023-11-18T18:00:18.924Z",
+            "modified": "2023-11-22T00:54:41.869Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -397,7 +397,7 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"id_producto\" : 27,\n  \"cantidad\" : 1,\n  \"precio_producto\" : 7540000.75\n}",
+                "raw": "{\n  \"id_producto\" : 26,\n  \"cantidad\" : 3,\n  \"precio_producto\" : 91500.99\n}",
                 "form": []
             },
             "tests": []
@@ -406,7 +406,7 @@
             "_id": "d93bbf82-8017-4472-aaf9-454daf4c4880",
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
-            "name": "Update Factura F del Usuario X",
+            "name": "Update Producto Factura F del Usuario X",
             "url": "/user/1/factura/15/factura_productos",
             "method": "PUT",
             "sortNum": 170000,
@@ -432,6 +432,29 @@
                 "raw": "{\n \"cantidad\" : 4,\n \"id_producto\" : 27,\n \"precio_producto\" : 7666333.33\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "22098b49-fbba-47d3-a79f-c96e59a656b6",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "DELETE Producto Factura F del Usuario X",
+            "url": "/user/1/factura/15/factura_productos/26",
+            "method": "DELETE",
+            "sortNum": 175000,
+            "created": "2023-11-22T00:47:18.045Z",
+            "modified": "2023-11-22T00:49:58.283Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4Mzc2MDE3fQ.jjdr1gAY-jL-nSXBk_GB5-jjrfvgZpF3aAxTBVrtJnA"
+                }
+            ],
+            "params": [],
             "tests": []
         },
         {
@@ -503,11 +526,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "Delete Servicio S del Usuario X",
-            "url": "/user/1/servicio/13",
+            "url": "/user/1/servicios/13",
             "method": "DELETE",
             "sortNum": 200000,
             "created": "2023-11-18T23:12:16.412Z",
-            "modified": "2023-11-18T23:20:05.252Z",
+            "modified": "2023-11-21T21:27:09.091Z",
             "headers": [
                 {
                     "name": "x-access-token",
