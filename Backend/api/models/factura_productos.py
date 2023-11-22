@@ -1,6 +1,6 @@
 from api.db.db import mysql
 from api.db.db import DBError
-
+from flask import jsonify
 
 
 class Factura_productos():
@@ -79,3 +79,13 @@ class Factura_productos():
         if cur.rowcount > 0:
             return Factura_productos(data[0]).to_json()
         raise DBError("ERROR obtieniendo Factura Productos by ID - no se encontro la fila")
+
+    def delete_factura_producto(id_factura, id_producto):
+        cur = mysql.connection.cursor()
+        cur.execute('DELETE FROM factura_productos WHERE `factura_productos`.`ID_FACTURA` = %s AND `factura_productos`.`ID_PRODUCTO` = %s;',(id_factura, id_producto))
+        mysql.connection.commit()
+        data = cur.fetchall()
+        if cur.rowcount > 0:
+            mensaje = "El Factura Producto fue borrado correctamente"
+            return jsonify({"message" : mensaje})
+        raise DBError("Error borrando Factura Producto")

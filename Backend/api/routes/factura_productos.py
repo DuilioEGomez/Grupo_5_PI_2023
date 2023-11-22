@@ -31,3 +31,14 @@ def update_factura_productos(id_user, id_factura):
         return jsonify(update_fact_prod), 201
     except Exception as e:
         return jsonify({"message" : e.args[0]}), 400
+
+@app.route('/user/<int:id_user>/factura/<int:id_factura>/factura_productos/<int:id_producto>', methods = ['DELETE'])
+@token_required
+@user_resources
+@factura_resources
+def delete_factura_productos(id_user, id_factura, id_producto):
+    try:
+        delete_factura_producto = Factura_productos.delete_factura_producto(id_factura, id_producto)
+        return delete_factura_producto
+    except Exception as e:
+        return jsonify({"message": e.args[0]}), 400

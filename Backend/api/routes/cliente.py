@@ -11,7 +11,7 @@ from flask import jsonify, request
 from api.utils import token_required, client_resource, user_resources
 from api.db.db import mysql
 
-@app.route('/user/<int:id_user>/client', methods = ['GET'])
+@app.route('/user/<int:id_user>/cliente', methods = ['GET'])
 @token_required
 @user_resources
 def get_all_clients_by_user_id(id_user):
@@ -115,7 +115,7 @@ def get_ranking_clientes(id_user):
 #         ranking_serviciosList.append(objRanking_servicios.to_json())
 #     return jsonify({"ranking servicios" : ranking_serviciosList})
 
-@app.route('/user/<int:id_user>/client', methods = ['POST'])
+@app.route('/user/<int:id_user>/cliente', methods = ['POST'])
 @token_required
 @user_resources
 def create_client(id_user):

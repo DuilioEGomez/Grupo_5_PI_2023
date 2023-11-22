@@ -61,7 +61,7 @@ def update_servicio(id_user, id_servicio):
     except Exception as e:
         return jsonify({"message": e.args[0]}), 400
 
-@app.route('/user/<int:id_user>/servicio/<int:id_servicio>', methods = ['DELETE'])
+@app.route('/user/<int:id_user>/servicios/<int:id_servicio>', methods = ['DELETE'])
 @token_required
 @user_resources
 
