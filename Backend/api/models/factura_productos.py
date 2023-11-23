@@ -2,7 +2,6 @@ from api.db.db import mysql
 from api.db.db import DBError
 from flask import jsonify
 
-
 class Factura_productos():
     schema = {
         #"id_factura" : int,
