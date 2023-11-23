@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Proyecto_Informatico",
-    "dateExported": "2023-11-22T00:58:47.645Z",
+    "dateExported": "2023-11-23T00:56:19.375Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -626,6 +626,93 @@
                 {
                     "name": "x-access-token",
                     "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4MjYxMjE1fQ.eDB-SomeO379d4WfJR4VO-QKL3DvHT-4RuPgP2fGcKg"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "dc55e77e-b63c-4db3-894d-3570f23fdb37",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Create New Servicio S en  Factura F Factura_Servicios",
+            "url": "/user/1/factura/21/factura_servicios",
+            "method": "POST",
+            "sortNum": 250000,
+            "created": "2023-11-23T00:22:39.504Z",
+            "modified": "2023-11-23T00:53:18.619Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4NDc0ODgyfQ.XuY_81OxhwF9gFVP0CdlBbV513CzfDX8IW_Tl0dLGJI"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id_servicio\" : 8,\n  \"cantidad\" : 1,\n  \"precio_servicio\" : 15000.00\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f263e061-9333-4062-b8f0-313abde33f66",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Update Servicio S en Factura F Factura_Servicios",
+            "url": "/user/1/factura/21/factura_servicios",
+            "method": "PUT",
+            "sortNum": 260000,
+            "created": "2023-11-23T00:43:18.651Z",
+            "modified": "2023-11-23T00:45:48.982Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4NDc0ODgyfQ.XuY_81OxhwF9gFVP0CdlBbV513CzfDX8IW_Tl0dLGJI"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id_servicio\" : 6,\n  \"cantidad\" : 2,\n  \"precio_servicio\" : 8000.00\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "042e0563-1f8c-4b00-bbec-6892b9abb0a1",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "DELETE Servicio S en Factura F Factura_Servicio",
+            "url": "/user/1/factura/21/factura_servicios/8",
+            "method": "DELETE",
+            "sortNum": 270000,
+            "created": "2023-11-23T00:52:07.535Z",
+            "modified": "2023-11-23T00:55:37.475Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4NDc0ODgyfQ.XuY_81OxhwF9gFVP0CdlBbV513CzfDX8IW_Tl0dLGJI"
                 }
             ],
             "params": [],
