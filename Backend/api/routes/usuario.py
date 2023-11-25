@@ -25,4 +25,4 @@ def login():
     token = jwt.encode({'id': row[0],
                         'exp': datetime.datetime.utcnow() + datetime.timedelta(days=90)}, app.config['SECRET_KEY'])
 
-    return jsonify({"token": token, "username": auth.username , "id": row[0]})
+    return jsonify({"success": True, "token": token, "username": auth.username , "id": row[0]})
