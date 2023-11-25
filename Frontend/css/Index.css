@@ -21,14 +21,26 @@ h1 {
 
 /*Aca comienza la seccion del menu*/
 .main-menu {
-    height: 680px;
+    /* height: 680px; */
+    width: fit-content;
     background-color: var(--color-fondo);
     position: fixed;
     top: var(--header-height);
     transition: transform 0.3s ease-in-out; /* Mantén la transición para el efecto suave */
     z-index: 1000;
 }
+.menu-group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
 
+.menu-group button {
+    width: 100%;
+    margin-bottom: 8px; /* Ajusta según tu preferencia para agregar espacio entre los botones */
+}
+
+/* 
 .menu-group {
     padding: 5px;
     border-bottom-style: solid;
@@ -64,7 +76,7 @@ h1 {
 
 .menu-group > a > span:nth-child(2) {
     margin-top: 5px;
-}
+} */
 
 /* ESTILOS DEL MAIN */
 main {
@@ -96,4 +108,10 @@ footer {
 
 .redes-sociales i {
     font-size: 24px;
+}
+
+.contenedor1{
+    padding-left: 160px;
+    padding-top: 10px;
+
 }
