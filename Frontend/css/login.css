@@ -1,0 +1,80 @@
+body{
+    background-color: aquamarine;
+}
+
+/* Estilos para el header */
+.main-header {
+    background-color: chartreuse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para el h1 dentro del header */
+h1 {
+    color: var(--color-blanco);
+    font-family: var(--fuente-principal);
+    font-size: xx-large;
+    margin-top: 0 px; /* Ajusta según sea necesario */
+}
+
+
+.main-menu{
+    height:680px; /*le pusimos altura predefinida para que se justifique el overflow-y utilizado en estilos iniciales y para que ademas al estar fixed ocupe el alto visible de la pantalla */
+    background-color:var(--color-fondo); /*color de fondo*/
+    position:fixed; /*Establezco posicion absolute en el contenedor para que pierda su posicion en el flujo y el main quede a continuacion del header(ya que el menu se despliega desde el costado) y poder utilizar la propiedad top para que quede por debajo del main header */
+    top:var(--header-height);/*Establezco la posicion de top del contenedor del menu luego del height de la cabecera*/    
+    transition: transform 0.3s ease-in-out; /*respuesta de la tranformacion*/
+    transform: translateX(-95%); /*el menu se encuentra escondido y solo se ve la barra de scroll*/
+    z-index: 1000; /*para que se vea por encima del main al desplegarse*/
+}
+
+.main-menu:hover{
+    transform:translateX(0%);/*cuando se pasa el mouse por encima se despliega el menu se translada la posicion en X*/
+}
+
+.menu-group{
+    padding:5px; /*padding de 5px*/
+    border-bottom-style: solid; /*pongo el borde inferior solido*/
+    border-bottom-color: var(--color-textos); /*color blanco*/
+}
+
+.menu-group ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    margin: 0; /* Elimina el margen predeterminado de la lista */
+    padding: 0; /* Elimina el relleno predeterminado de la lista */
+}
+
+.menu-group>h2{
+    color:var(--color-textos); /*color de letra blanco para el h2*/
+    margin-bottom: 5px; /*margen inferior*/
+}
+
+.menu-group>a{
+    color:var(--color-textos); /*color de letra blanco*/
+    display: flex; /*display flex para ver los span uno al lado del otro*/
+    text-decoration: none; /*sacamos el subrayado de los a*/
+}
+
+.menu-group>a:hover{
+    background-color: #1a9e88; /*se agrega el hover para que cuando pase el raton por encima cambie de color el fondo*/
+    cursor: pointer; /*se cambia para poner una mano cuando va a seleccionar alguno de ellos */
+}
+
+.menu-group>a>span{
+    margin-right: 5px; /*le doy margen a los span en general para que esten separados*/
+    margin-bottom: 5px;
+}
+
+.menu-group>a>span:nth-child(2){
+    margin-top: 5px; /*coloco el segundo span para que se vea como quiero*/
+}
+
+
+/*ESTILOS DEL MAIN*/
+
+main{
+    margin-top: var(--header-height); /*debajo del header*/
+    margin-left:20px; /*a la derecha del scroll desplegable*/
+    font-family: 'Ubuntu',Arial, Helvetica, sans-serif /*Utilizo la fuente descargada y un par de respaldo en caso de que el explorador no reconozca la fuente*/
+}
