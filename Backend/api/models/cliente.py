@@ -54,8 +54,9 @@ class Cliente():
             nombre = data["nombre"]
             apellido = data["apellido"]
             cuit = data["cuit"]
+            print(data)
             cur = mysql.connection.cursor()
-            cur.execute('INSERT INTO `cliente` (`ID`, `ID_USUARIO`, `NOMBRE`, `APELLIDO`, `CUIT`, `activo`) VALUES (NULL, %s, %s, %s, %s, %s);',(id_usuario, nombre, apellido, cuit, 1))
+            cur.execute('INSERT INTO `cliente` (`ID`, `ID_USUARIO`, `NOMBRE`, `APELLIDO`, `CUIT`, `activo`) VALUES (NULL, %s, %s, %s, %s, 1);',(id_usuario, nombre, apellido, cuit))
             mysql.connection.commit()    
             if cur.rowcount > 0:
                 cur.execute('SELECT LAST_INSERT_ID()')
