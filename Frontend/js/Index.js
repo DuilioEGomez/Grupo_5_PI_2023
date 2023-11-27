@@ -8,7 +8,6 @@ if (username) {
     h1Elemento.textContent = 'Grupo 5 - Proyecto Informatico - UPSO 2023';
 }
 
-
 // Stock
 document.getElementById('stockButton').addEventListener('click', function() {
 
@@ -149,6 +148,7 @@ function construirTabla(data) {
 
 
 
+
 //Clientes del usuario X
 document.getElementById('clientesButton').addEventListener('click', function() {
     // Llama a la función para cargar clientes
@@ -168,13 +168,22 @@ function cargarClientes() {
     .then(response => response.json())
     .then(data => {
         console.log('Datos de Clientes del usuario X:', data);
-        
+
         const contenedor1 = document.getElementById('contenedor1');
-
-        // limpiamos el contenedor
+        // // limpiamos el contenedor
         contenedor1.innerHTML = '';
-
-        // Creamos la tabla
+        
+        inputNombreNuevo.placeholder = 'Nombre';
+        inputApellidoNuevo.placeholder = 'Apellido';
+        inputCuitNuevo.placeholder = 'CUIT';
+        btnCrearCliente.textContent = 'Crear Cliente';
+           
+        contenedor1.appendChild(inputNombreNuevo);
+        contenedor1.appendChild(inputApellidoNuevo);
+        contenedor1.appendChild(inputCuitNuevo);
+        contenedor1.appendChild(btnCrearCliente);
+    
+        //Creamos la tabla
         const table = document.createElement('table');
 
         
@@ -189,15 +198,14 @@ function cargarClientes() {
         headerCuit.textContent = 'CUIT';
         headerAcciones.textContent = 'Acciones';
 
-        // iteramos en clientes e insertamos los datos
+        //iteramos en clientes e insertamos los datos
         data.clientes.forEach(cliente => {
             const row = table.insertRow();
             const cellApellido = row.insertCell(0);
             const cellNombre = row.insertCell(1);
             const cellCuit = row.insertCell(2);
             const cellAcciones = row.insertCell(3);
-
-            
+  
             cellApellido.textContent = cliente.apellido;
             cellNombre.textContent = cliente.nombre;
             cellCuit.textContent = cliente.cuit;
@@ -239,7 +247,6 @@ function cargarClientes() {
                     cuit: parseInt(inputCuit.value, 10) 
                 };
 
-                
                 fetch(`http://127.0.0.1:5106/user/${id}/cliente/${cliente.id}`, {
                     method: 'PUT',
                     headers: {
@@ -250,7 +257,12 @@ function cargarClientes() {
                     body: JSON.stringify(updatedData)
                 })
                 .then(response => response.json())
-                .then(data => console.log('Response from Modificar:', data))
+                .then(data => {
+                    console.log('Response from Modificar:', data)
+                    cargarClientes()
+                
+                })
+                                  
                 .catch(error => console.error('Error al Modificar:', error));
 
                 // Actualizamos los campos
@@ -294,12 +306,61 @@ function cargarClientes() {
             cellAcciones.appendChild(btnBorrar);
         });
 
-        // Agrega la tabla al contenedor
         contenedor1.appendChild(table);
-    })
-    
+  
+        })      
+
     .catch(error => console.error('Error en la solicitud:', error));
 };
+
+
+const inputNombreNuevo = document.createElement('input');
+const inputApellidoNuevo = document.createElement('input');
+const inputCuitNuevo = document.createElement('input');
+const btnCrearCliente = document.createElement('button');
+
+btnCrearCliente.addEventListener('click', function() {
+
+// function crearCliente () {
+    const id = localStorage.getItem('id');
+    const token = localStorage.getItem('token');
+    const nombre = inputNombreNuevo.value;
+    const apellido = inputApellidoNuevo.value;
+    const cuit = parseInt(inputCuitNuevo.value,10);
+
+    
+    const nuevoCliente = {
+        "nombre" : nombre,
+        "apellido": apellido,
+        "cuit": cuit
+    }
+
+    console.log(JSON.stringify(nuevoCliente));
+    
+        fetch(`http://127.0.0.1:5106/user/${id}/cliente`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'user-id': id,
+                'x-access-token': token
+            },
+            body: JSON.stringify(nuevoCliente)
+         
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Response from Crear Cliente:', data);
+            // Limpiar los campos de entrada después de crear un cliente
+            cargarClientes();
+            inputNombreNuevo.value = '';
+            inputApellidoNuevo.value = '';
+            inputCuitNuevo.value = '';
+            // Recargar la lista de clientes
+            
+        })
+    .catch(error => console.error('Error al Crear Cliente:', error));
+});
+
 
 //Facturas del usuario X
 document.getElementById('facturasButton').addEventListener('click', function() {
