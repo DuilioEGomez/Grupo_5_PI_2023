@@ -1,3 +1,15 @@
+// Obtener el username del localstorage y escribirlo en H1 de la pagina.
+const h1Elemento = document.querySelector('.main-header h1');
+const username = localStorage.getItem('username');
+
+if (username) {
+    h1Elemento.textContent = `Dashboard ${username}`;
+} else {
+    h1Elemento.textContent = 'Grupo 5 - Proyecto Informatico - UPSO 2023';
+}
+
+
+// Stock
 document.getElementById('stockButton').addEventListener('click', function() {
 
     const id = localStorage.getItem('id');
@@ -17,42 +29,7 @@ document.getElementById('stockButton').addEventListener('click', function() {
     .catch(error => console.error('Error en la solicitud:', error));
 });
 
-
-//   document.getElementById('rankingProductoButton').addEventListener('click', function() {
-
-//     const id = localStorage.getItem('id');
-//     const token = localStorage.getItem('token');
-
-//     fetch(`http://127.0.0.1:5106/user/${id}/ranking_productos`,{
-//         headers: {
-//                     'user-id': id,
-//                     'x-access-token': token
-//         }
-//     })
-//       .then(response => response.json())
-//       .then(data => {
-//         console.log('Ranking por Producto:', data);
-//       })
-//       .catch(error => console.error('Error en la solicitud:', error));
-//   });
-
-//   document.getElementById('rankingServicioButton').addEventListener('click', function() {
-    
-//     const id = localStorage.getItem('id');
-//     const token = localStorage.getItem('token');
-    
-//     fetch(`http://127.0.0.1:5106/user/${id}/ranking_servicios`,{
-//         headers: {
-//             'user-id': id,
-//             'x-access-token': token
-//         }
-//     })
-//       .then(response => response.json())
-//       .then(data => {
-//         console.log('Ranking por Servicio:', data);
-//       })
-//       .catch(error => console.error('Error en la solicitud:', error));
-//   });
+// Ranking Productos 
 document.getElementById('rankingProductoButton').addEventListener('click', function() {
     const id = localStorage.getItem('id');
     const token = localStorage.getItem('token');
@@ -73,6 +50,7 @@ document.getElementById('rankingProductoButton').addEventListener('click', funct
         .catch(error => console.error('Error en la solicitud:', error));
 });
 
+// Ranking Servicios
 document.getElementById('rankingServicioButton').addEventListener('click', function() {
     const id = localStorage.getItem('id');
     const token = localStorage.getItem('token');
@@ -96,26 +74,26 @@ document.getElementById('rankingServicioButton').addEventListener('click', funct
 function construirTabla(data) {
     const contenedor1 = document.getElementById('contenedor1');
 
-    // Clear the previous content in case there is any
+    // Limpia el contenedor
     contenedor1.innerHTML = '';
 
-    // Create a table
+    // Crea la tabla
     const table = document.createElement('table');
-    // Create the table header
+    
     const headerRow = table.insertRow(0);
     Object.keys(data[0]).forEach(key => {
-        // Exclude "producto_id" from the table header
+        // Excluye "producto_id" 
         if (key !== "producto_id") {
             const headerCell = headerRow.insertCell();
             headerCell.textContent = key;
         }
     });
 
-    // Loop through the data and create a row for each
+    // Itera en data y va creando la tabla
     data.forEach(item => {
         const row = table.insertRow();
         Object.keys(item).forEach(key => {
-            // Exclude "producto_id" from the table rows
+            
             if (key !== "producto_id") {
                 const cell = row.insertCell();
                 cell.textContent = item[key];
@@ -123,10 +101,12 @@ function construirTabla(data) {
         });
     });
 
-    // Append the table to the container
+    // Agrega la tabla al contenedor
     contenedor1.appendChild(table);
 }
-//*************** */
+
+
+// Ranking Clientes
   document.getElementById('rankingClienteButton').addEventListener('click', function() {
 
     const id = localStorage.getItem('id');
@@ -167,15 +147,7 @@ function construirTabla(data) {
       .catch(error => console.error('Error en la solicitud:', error));
   });
 
-// Obtener el username del localstorage y escribirlo en H1 de la pagina.
-const h1Elemento = document.querySelector('.main-header h1');
-const username = localStorage.getItem('username');
 
-if (username) {
-    h1Elemento.textContent = `Dashboard ${username}`;
-} else {
-    h1Elemento.textContent = 'Grupo 5 - Proyecto Informatico - UPSO 2023';
-}
 
 //Clientes del usuario X
 document.getElementById('clientesButton').addEventListener('click', function() {
@@ -199,13 +171,13 @@ function cargarClientes() {
         
         const contenedor1 = document.getElementById('contenedor1');
 
-        // Clear the previous content in case there is any
+        // limpiamos el contenedor
         contenedor1.innerHTML = '';
 
-        // Create a table
+        // Creamos la tabla
         const table = document.createElement('table');
 
-        // Create the table header
+        
         const headerRow = table.insertRow(0);
         const headerApellido = headerRow.insertCell(0);
         const headerNombre = headerRow.insertCell(1);
@@ -217,7 +189,7 @@ function cargarClientes() {
         headerCuit.textContent = 'CUIT';
         headerAcciones.textContent = 'Acciones';
 
-        // Loop through the clients and create a row for each
+        // iteramos en clientes e insertamos los datos
         data.clientes.forEach(cliente => {
             const row = table.insertRow();
             const cellApellido = row.insertCell(0);
@@ -225,12 +197,12 @@ function cargarClientes() {
             const cellCuit = row.insertCell(2);
             const cellAcciones = row.insertCell(3);
 
-            // Original values
+            
             cellApellido.textContent = cliente.apellido;
             cellNombre.textContent = cliente.nombre;
             cellCuit.textContent = cliente.cuit;
 
-            // Input fields for editing
+            // Inputs 
             const inputApellido = document.createElement('input');
             const inputNombre = document.createElement('input');
             const inputCuit = document.createElement('input');
@@ -239,11 +211,11 @@ function cargarClientes() {
             inputNombre.value = cliente.nombre;
             inputCuit.value = cliente.cuit;
 
-            // Button to start editing
+            // boton para empezar a editar
             const btnModificar = document.createElement('button');
             btnModificar.textContent = 'Modificar';
             btnModificar.addEventListener('click', () => {
-                // Switch to editing mode
+                // cambiamos a modo editor
                 cellApellido.innerHTML = '';
                 cellNombre.innerHTML = '';
                 cellCuit.innerHTML = '';
@@ -252,22 +224,22 @@ function cargarClientes() {
                 cellNombre.appendChild(inputNombre);
                 cellCuit.appendChild(inputCuit);
 
-                // Show "Aplicar" button
+                // mostramos el boton "Aplicar"
                 cellAcciones.appendChild(btnAplicar);
             });
 
-            // Button to apply changes
+            // creamos el boton aplicar
             const btnAplicar = document.createElement('button');
             btnAplicar.textContent = 'Aplicar';
             btnAplicar.addEventListener('click', () => {
-                // Construct JSON object with updated values
+                
                 const updatedData = {
                     nombre: inputNombre.value,
                     apellido: inputApellido.value,
-                    cuit: parseInt(inputCuit.value, 10) // Parse cuit as an integer
+                    cuit: parseInt(inputCuit.value, 10) 
                 };
 
-                // Replace 'urlModificar' with the actual URL for modifying
+                
                 fetch(`http://127.0.0.1:5106/user/${id}/cliente/${cliente.id}`, {
                     method: 'PUT',
                     headers: {
@@ -281,12 +253,13 @@ function cargarClientes() {
                 .then(data => console.log('Response from Modificar:', data))
                 .catch(error => console.error('Error al Modificar:', error));
 
-                // Update table cell with new values
+                // Actualizamos los campos
                 cellApellido.textContent = updatedData.apellido;
                 cellNombre.textContent = updatedData.nombre;
                 cellCuit.textContent = updatedData.cuit;
 
-                // Remove input fields and "Aplicar" button
+                
+                // Quitamos los campos de entrada y el boton "Aplicar"
                 cellAcciones.innerHTML = '';
                 cellAcciones.appendChild(btnModificar);
 
@@ -294,11 +267,11 @@ function cargarClientes() {
 
             });
 
-            // Button to delete
+            // Boton Borrar
             const btnBorrar = document.createElement('button');
             btnBorrar.textContent = 'Borrar';
             btnBorrar.addEventListener('click', () => {
-                // Replace 'urlBorrar' with the actual URL for deleting
+                
                 fetch(`http://127.0.0.1:5106/user/${id}/cliente/${cliente.id}`, {
                     method: 'DELETE',
                     headers: {
@@ -310,18 +283,18 @@ function cargarClientes() {
                 .then(data => {
                     console.log('Response from Borrar:', data);
                     alert(`${JSON.stringify(data["message"], null, 2)}`);
-                    // Reload the container as if "Clientes" button was pressed
+                    // Recargamos 
                     cargarClientes();
                 })
                 .catch(error => console.error('Error al Borrar:', error));
             });
 
-            // Append "Modificar" and "Borrar" buttons to the actions cell
+            // Agregamos botones "Modificar" y "Borrar" 
             cellAcciones.appendChild(btnModificar);
             cellAcciones.appendChild(btnBorrar);
         });
 
-        // Append the table to the container
+        // Agrega la tabla al contenedor
         contenedor1.appendChild(table);
     })
     
