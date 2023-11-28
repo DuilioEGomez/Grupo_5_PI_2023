@@ -110,8 +110,36 @@ footer {
     font-size: 24px;
 }
 
-.contenedor1{
-    padding-left: 160px;
+.clientes{
+    padding-right: 160px;
     padding-top: 10px;
 
+}
+
+.stock{
+    background-color: gray;
+    padding-top: 10px;
+}
+.historial{
+    background-color: orange;
+    padding-top: 10px;
+}
+
+.ranking_productos{
+    background-color: violet;
+    padding-top: 10px;
+}
+
+.ranking_servicios{
+    background-color: cyan;
+    padding-top: 10px;
+}
+.ranking_clientes{
+    background-color: lightcoral;
+    padding-top: 10px;
+}
+.contenedor{
+    margin-left: 160px;
+    margin-top: 10px;
+    
 }
