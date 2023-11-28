@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Proyecto_Informatico",
-    "dateExported": "2023-11-26T00:35:35.813Z",
+    "dateExported": "2023-11-28T12:34:09.585Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -202,11 +202,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "Ranking Servicios por Usuario",
-            "url": "/user/1/ranking_servicios",
+            "url": "/user/1/servicios",
             "method": "GET",
             "sortNum": 95000,
             "created": "2023-11-08T19:46:11.432Z",
-            "modified": "2023-11-08T19:47:37.432Z",
+            "modified": "2023-11-28T00:38:45.074Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -229,7 +229,7 @@
             "method": "POST",
             "sortNum": 100000,
             "created": "2023-11-06T13:41:37.284Z",
-            "modified": "2023-11-25T23:33:08.340Z",
+            "modified": "2023-11-27T09:36:39.681Z",
             "headers": [
                 {
                     "name": "Content-Type",
@@ -247,7 +247,7 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre\": \"Test 34\",\n  \"apellido\": \"BORArrRR\",\n  \"cuit\": 19377582\n}",
+                "raw": "{\n  \"nombre\": \"ASpen\",\n  \"apellido\": \"Musica\",\n  \"cuit\": 1023\n}",
                 "form": []
             },
             "tests": []
@@ -527,11 +527,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "Delete Servicio S del Usuario X",
-            "url": "/user/1/servicios/13",
+            "url": "/user/1/servicios/15",
             "method": "DELETE",
             "sortNum": 200000,
             "created": "2023-11-18T23:12:16.412Z",
-            "modified": "2023-11-21T21:27:09.091Z",
+            "modified": "2023-11-28T01:08:18.596Z",
             "headers": [
                 {
                     "name": "x-access-token",
@@ -554,7 +554,7 @@
             "method": "POST",
             "sortNum": 210000,
             "created": "2023-11-20T13:01:14.658Z",
-            "modified": "2023-11-20T16:39:11.811Z",
+            "modified": "2023-11-27T19:12:44.842Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -572,7 +572,7 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"id_usuario\" : 1,\n  \"nombre_producto\" : \"A BORRARRR\",\n  \"stock_disponible\" : 12,\n  \"precio\" : 777999.53,\n  \"proveedor\" : \"DELETE SYSTEMS\",\n  \"proveedor_email\" : \"sales@delete.com\",\n  \"alerta_stock\" : 7\n}",
+                "raw": "{\n  \"id_usuario\" : 1,\n  \"nombre_producto\" : \"Samsung A32\",\n  \"stock_disponible\" : 14,\n  \"precio\" : 55588.00,\n  \"proveedor\" : \"Samsung\",\n  \"proveedor_email\" : \"sales@samsung.com\",\n  \"alerta_stock\" : 8\n}",
                 "form": []
             },
             "tests": []
@@ -714,6 +714,52 @@
                 {
                     "name": "x-access-token",
                     "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4NDc0ODgyfQ.XuY_81OxhwF9gFVP0CdlBbV513CzfDX8IW_Tl0dLGJI"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "19dedd43-f1b8-4dad-aa11-babf2074b504",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Total Factura Productos F del Usuario X",
+            "url": "/user/1/factura_productos_total/15",
+            "method": "GET",
+            "sortNum": 280000,
+            "created": "2023-11-28T12:15:47.185Z",
+            "modified": "2023-11-28T12:16:45.770Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4OTQ5Nzc5fQ.q_aOlDOtclyMbNydG-NEZyYIb6xg-SCerFY4AZUrP8g"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "cb9071a2-8285-48dc-873f-397b130f344a",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Total factura Servicio F del Usuario X",
+            "url": "/user/1/factura_servicios_total/24",
+            "method": "GET",
+            "sortNum": 290000,
+            "created": "2023-11-28T12:29:42.943Z",
+            "modified": "2023-11-28T12:33:44.994Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4OTQ5Nzc5fQ.q_aOlDOtclyMbNydG-NEZyYIb6xg-SCerFY4AZUrP8g"
                 }
             ],
             "params": [],
