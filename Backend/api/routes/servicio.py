@@ -26,7 +26,7 @@ def get_ranking_servicios(id_user):
 
 def get_servicios_by_user(id_user):
     cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM `servicio` WHERE servicio.ID_USUARIO = %s;',(id_user,))
+    cur.execute('SELECT * FROM `servicio` WHERE servicio.ID_USUARIO = %s AND servicio.activo = 1;',(id_user,))
     data = cur.fetchall()
     servicioList = []
     for row in data:
