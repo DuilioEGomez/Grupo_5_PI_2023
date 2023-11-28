@@ -8,12 +8,17 @@ if (username) {
 } else {
     h1Elemento.textContent = 'Grupo 5 - Proyecto Informatico - UPSO 2023';
 }
-
+const columnOrderHistorial = ['apellido', 'nombre', 'cuit', 'fecha factura', 'nombre_producto', 'precio_producto', 'cantidad'];
+const columnOrderStock = ['nombre_producto','precio','proveedor', 'proveedor_email','stock_disponible', 'alerta_stock','id','id_usuario'];
+const columnOrderRankingProductos = ['nombre producto', 'precio producto','total cantidad', 'producto_id'];
+const columnOrderRankingServicios = ['nombre servicio','precio servicio','total_cantidad','servicio_id'];
+const columnOrderRankingClientes = ['apellido', 'nombre','ranking_cliente', 'id'];
 // Stock
 document.getElementById('stockButton').addEventListener('click', function() {
 
     const id = localStorage.getItem('id');
     const token = localStorage.getItem('token');
+    
 
     fetch(`http://127.0.0.1:5106/user/${id}/stock`, {
         headers: {
@@ -25,7 +30,7 @@ document.getElementById('stockButton').addEventListener('click', function() {
     .then(data => {
         console.log('Datos de Stock:', data);
         h1_vivo = 'Stock';
-        construirTabla(data["stock"]);
+        construirTabla(data["stock"], columnOrderStock);
         contenedor1.classList.remove('historial');
         contenedor1.classList.remove('ranking_productos');
         contenedor1.classList.remove('ranking_servicios');
@@ -56,7 +61,7 @@ document.getElementById('rankingProductoButton').addEventListener('click', funct
 
             // Llama a la función para construir la tabla
             h1_vivo = 'Ranking por Productos';
-            construirTabla(data["ranking productos"]);
+            construirTabla(data["ranking productos"], columnOrderRankingProductos);
 
             contenedor1.classList.remove('historial');
             contenedor1.classList.remove('stock');
@@ -87,7 +92,7 @@ document.getElementById('rankingServicioButton').addEventListener('click', funct
 
             // Llama a la función para construir la tabla
             h1_vivo = 'Ranking por Servicios';
-            construirTabla(data["ranking servicios"]);
+            construirTabla(data["ranking servicios"], columnOrderRankingServicios);
             contenedor1.classList.remove('historial');
             contenedor1.classList.remove('stock');
             contenedor1.classList.remove('ranking_productos');
@@ -119,7 +124,7 @@ document.getElementById('rankingClienteButton').addEventListener('click', functi
         console.log('Ranking por Cliente:', data);
 
         h1_vivo = 'Ranking Clientes';
-        construirTabla(data["ranking clientes"]);
+        construirTabla(data["ranking clientes"], columnOrderRankingClientes);
         contenedor1.classList.remove('ranking_productos');
         contenedor1.classList.remove('stock');
         contenedor1.classList.remove('ranking_servicios');
@@ -131,7 +136,7 @@ document.getElementById('rankingClienteButton').addEventListener('click', functi
       })
       .catch(error => console.error('Error en la solicitud:', error));
   });
-
+// Historial
 document.getElementById('historialVentasButton').addEventListener('click', function() {
     
     const id = localStorage.getItem('id');
@@ -148,7 +153,7 @@ document.getElementById('historialVentasButton').addEventListener('click', funct
         console.log('Historial de Ventas:', data);
 
         h1_vivo = 'Historial';
-        construirTabla(data["historial"]);
+        construirTabla(data["historial"], columnOrderHistorial);
         contenedor1.classList.remove('ranking_productos');
         contenedor1.classList.remove('stock');
         contenedor1.classList.remove('ranking_servicios');
@@ -164,7 +169,7 @@ document.getElementById('historialVentasButton').addEventListener('click', funct
   });
 
 
-function construirTabla(data) {
+function construirTabla(data, columnOrder) {
     const contenedor1 = document.getElementById('contenedor1');
 
     // Limpia el contenedor
@@ -176,27 +181,25 @@ function construirTabla(data) {
 
     // Crea la tabla
     const table = document.createElement('table');
-    // Lista de claves a excluir del objeto data
-    const excludedKeys = ["id", "id_usuario", "id_servicio"];
 
+    // Crea la fila de encabezado según el orden deseado
     const headerRow = table.insertRow(0);
-    Object.keys(data[0]).forEach(key => {
-        if (!excludedKeys.includes(key)) {
-            const headerCell = headerRow.insertCell();
-            headerCell.textContent = key;
-        }
+    columnOrder.forEach(column => {
+        const headerCell = headerRow.insertCell();
+        headerCell.textContent = column;
     });
 
-    // Itera en data y va creando la tabla
+    // Itera en data y va creando la tabla según el orden deseado
     data.forEach(item => {
         const row = table.insertRow();
-        Object.keys(item).forEach(key => { 
-            if (!excludedKeys.includes(key)) {
-                const cell = row.insertCell();
-                cell.textContent = item[key];
-            }
+        columnOrder.forEach(column => {
+            const cell = row.insertCell();
+            cell.textContent = item[column];
         });
     });
+
+        // Crea la fila de encabezado según el orden deseado
+
 
     // Agrega la tabla al contenedor
 
@@ -247,8 +250,9 @@ function cargarClientes() {
         inputCuitNuevo.placeholder = 'CUIT';
         btnCrearCliente.textContent = 'Crear Cliente';
            
-        contenedor1.appendChild(inputNombreNuevo);
         contenedor1.appendChild(inputApellidoNuevo);
+        contenedor1.appendChild(inputNombreNuevo);
+        
         contenedor1.appendChild(inputCuitNuevo);
         contenedor1.appendChild(btnCrearCliente);
     
