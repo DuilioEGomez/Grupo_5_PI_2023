@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Proyecto_Informatico",
-    "dateExported": "2023-11-28T12:34:09.585Z",
+    "dateExported": "2023-11-28T18:34:39.702Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -202,11 +202,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "Ranking Servicios por Usuario",
-            "url": "/user/1/servicios",
+            "url": "/user/1/ranking_servicios",
             "method": "GET",
             "sortNum": 95000,
             "created": "2023-11-08T19:46:11.432Z",
-            "modified": "2023-11-28T00:38:45.074Z",
+            "modified": "2023-11-28T18:18:36.268Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -760,6 +760,29 @@
                 {
                     "name": "x-access-token",
                     "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4OTQ5Nzc5fQ.q_aOlDOtclyMbNydG-NEZyYIb6xg-SCerFY4AZUrP8g"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b3d06392-d50c-4cda-b39d-0acdc90f0421",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Todos los Servicios del Usuario X",
+            "url": "/user/1/servicios",
+            "method": "GET",
+            "sortNum": 300000,
+            "created": "2023-11-28T18:33:36.525Z",
+            "modified": "2023-11-28T18:34:28.633Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4OTcyNDMyfQ.Bjp1sshJaCCtqNK92n6fzu751obkOZqDsIojZaWc6qU"
                 }
             ],
             "params": [],
