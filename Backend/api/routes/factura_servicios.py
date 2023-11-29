@@ -54,3 +54,4 @@ def get_total_factura_servicio(id_user, id_factura):
     for row in data:
         objFactura_servicio_total = Factura_servicios_total(row)
     return jsonify({"total factura servicios" : objFactura_servicio_total.to_json()})
+
