@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Proyecto_Informatico",
-    "dateExported": "2023-11-28T18:34:39.702Z",
+    "dateExported": "2023-11-29T00:47:25.257Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -83,6 +83,29 @@
             "tests": []
         },
         {
+            "_id": "b3d06392-d50c-4cda-b39d-0acdc90f0421",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Todos los Servicios del Usuario X",
+            "url": "/user/1/servicios",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-11-28T18:33:36.525Z",
+            "modified": "2023-11-28T22:39:28.521Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4OTcyNDMyfQ.Bjp1sshJaCCtqNK92n6fzu751obkOZqDsIojZaWc6qU"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
             "_id": "44201f91-2e25-4f77-b80d-69eb3ce8f1bd",
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
@@ -109,12 +132,12 @@
             "_id": "d2920b60-88ed-4f6d-a8b7-cb4ce1e3224a",
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
-            "name": "Todos los productos de la factura Y del usuario X",
-            "url": "user/1/factura/20",
+            "name": "Todos los detalles de la factura Y del usuario X",
+            "url": "user/1/factura/15",
             "method": "GET",
             "sortNum": 60000,
             "created": "2023-10-30T01:48:19.441Z",
-            "modified": "2023-11-06T11:15:20.789Z",
+            "modified": "2023-11-28T22:51:04.008Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -747,11 +770,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "Total factura Servicio F del Usuario X",
-            "url": "/user/1/factura_servicios_total/24",
+            "url": "/user/1/factura_servicios_total/21",
             "method": "GET",
             "sortNum": 290000,
             "created": "2023-11-28T12:29:42.943Z",
-            "modified": "2023-11-28T12:33:44.994Z",
+            "modified": "2023-11-28T21:09:05.786Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -760,29 +783,6 @@
                 {
                     "name": "x-access-token",
                     "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4OTQ5Nzc5fQ.q_aOlDOtclyMbNydG-NEZyYIb6xg-SCerFY4AZUrP8g"
-                }
-            ],
-            "params": [],
-            "tests": []
-        },
-        {
-            "_id": "b3d06392-d50c-4cda-b39d-0acdc90f0421",
-            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
-            "containerId": "",
-            "name": "Todos los Servicios del Usuario X",
-            "url": "/user/1/servicios",
-            "method": "GET",
-            "sortNum": 300000,
-            "created": "2023-11-28T18:33:36.525Z",
-            "modified": "2023-11-28T18:34:28.633Z",
-            "headers": [
-                {
-                    "name": "user-id",
-                    "value": "1"
-                },
-                {
-                    "name": "x-access-token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4OTcyNDMyfQ.Bjp1sshJaCCtqNK92n6fzu751obkOZqDsIojZaWc6qU"
                 }
             ],
             "params": [],
