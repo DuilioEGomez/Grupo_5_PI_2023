@@ -1,6 +1,7 @@
 from api import app
 from api.models.factura import Factura
 from api.models.productos_factura import Productos_factura
+from api.models.servicios_factura import Servicios_factura
 from flask import jsonify, request
 from api.utils import token_required, user_resources
 from api.db.db import mysql
@@ -41,7 +42,22 @@ def get_factura_by_user(id_user, id_factura):
     for row in data:
         objProductos_factura = Productos_factura(row)
         productos_facturaList.append(objProductos_factura.to_json())
-    return jsonify({"facturas" : productos_facturaList})
+    #return jsonify({"facturas" : productos_facturaList})
+    
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT DISTINCT factura_servicios.*, servicio.*, cliente.*, factura.* FROM factura_servicios INNER JOIN servicio ON factura_servicios.ID_SERVICIO = servicio.ID INNER JOIN factura ON factura_servicios.ID_FACTURA = factura.ID INNER JOIN cliente ON factura.ID_CLIENTE = cliente.ID WHERE factura.ID_USUARIO = %s AND factura_servicios.ID_FACTURA = %s;',(id_user, id_factura))
+    data = cur.fetchall()
+    servicios_facturaList = []
+    for row in data:
+        objServicio_factura = Servicios_factura(row)
+        servicios_facturaList.append(objServicio_factura.to_json())
+        
+    return jsonify({"detalle factura" : {"productos" : productos_facturaList, "servicios" : servicios_facturaList}})
+
+
+
+
+
 
 @app.route('/user/<int:id_user>/facturas', methods = ['GET'])
 @token_required
