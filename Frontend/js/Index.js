@@ -2,6 +2,8 @@
 const h1Elemento = document.querySelector('.main-header h1');
 const username = localStorage.getItem('username');
 
+
+
 var h1_vivo = '';
 if (username) {
     h1Elemento.textContent = `Dashboard ${username}`;
@@ -169,7 +171,7 @@ document.getElementById('historialVentasButton').addEventListener('click', funct
   });
 
 
-function construirTabla(data, columnOrder) {
+function construirTabla(data, columnOrder, mostrarBoton = false) {
     const contenedor1 = document.getElementById('contenedor1');
 
     // Limpia el contenedor
@@ -177,8 +179,6 @@ function construirTabla(data, columnOrder) {
     const h1_carga = document.createElement('h1');
     h1_carga.innerHTML = h1_vivo;
     
-    
-
     // Crea la tabla
     const table = document.createElement('table');
 
@@ -189,6 +189,12 @@ function construirTabla(data, columnOrder) {
         headerCell.textContent = column;
     });
 
+    // Agrega la columna adicional para el botón solo si mostrarBoton es true
+    if (mostrarBoton) {
+        const headerCellBoton = headerRow.insertCell();
+        headerCellBoton.textContent = 'Acciones';
+    }
+
     // Itera en data y va creando la tabla según el orden deseado
     data.forEach(item => {
         const row = table.insertRow();
@@ -196,6 +202,22 @@ function construirTabla(data, columnOrder) {
             const cell = row.insertCell();
             cell.textContent = item[column];
         });
+        
+        // Agrega el botón "Ver Detalle" solo si mostrarBoton es true
+        if (mostrarBoton) {
+            const botonDetalle = document.createElement('button');
+            botonDetalle.textContent = 'Ver Detalle';
+            botonDetalle.addEventListener('click', function() {
+                
+                console.log('Detalle factura ID = :', item.id);
+                verDetalle(item.id);
+        }
+            );
+            const cellBoton = row.insertCell();
+            cellBoton.appendChild(botonDetalle);
+        }
+
+        
     });
 
         // Crea la fila de encabezado según el orden deseado
