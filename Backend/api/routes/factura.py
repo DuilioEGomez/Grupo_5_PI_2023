@@ -2,6 +2,7 @@ from api import app
 from api.models.factura import Factura
 from api.models.productos_factura import Productos_factura
 from api.models.servicios_factura import Servicios_factura
+from api.models.facturas_detalladas import Facturas_detalladas
 from flask import jsonify, request
 from api.utils import token_required, user_resources
 from api.db.db import mysql
@@ -51,8 +52,19 @@ def get_factura_by_user(id_user, id_factura):
     for row in data:
         objServicio_factura = Servicios_factura(row)
         servicios_facturaList.append(objServicio_factura.to_json())
-        
-    return jsonify({"detalle factura" : {"productos" : productos_facturaList, "servicios" : servicios_facturaList}})
+
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT cliente.APELLIDO, cliente.NOMBRE, cliente.CUIT, factura.FECHA_FACTURA FROM factura JOIN cliente ON factura.ID_CLIENTE = cliente.ID JOIN usuario ON factura.ID_USUARIO = usuario.ID WHERE factura.ID = %s AND usuario.ID = %s;',(id_factura, id_user))
+    dataAN = cur.fetchall()
+    servicios_facturaList = []
+    for row in data:
+        objServicio_factura = Servicios_factura(row)
+        servicios_facturaList.append(objServicio_factura.to_json())
+    # cliente = dataAN[0][0],dataAN[0][1]
+    auxCliente = {"apellido": dataAN[0][0],"nombre" : dataAN[0][1],"cuit" : dataAN[0][2], "fecha factura" : dataAN[0][3]}
+    print(auxCliente)
+    print(servicios_facturaList)
+    return jsonify({"detalle factura" : {"cliente" : auxCliente, "productos" : productos_facturaList, "servicios" : servicios_facturaList}})
 
 
 
@@ -64,10 +76,10 @@ def get_factura_by_user(id_user, id_factura):
 @user_resources
 def get_facturas_by_user_id(id_user):
     cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM factura, usuario WHERE usuario.ID = %s AND factura.ID_USUARIO = %s;',(id_user, id_user))
+    cur.execute('SELECT factura.ID, factura.ID_USUARIO, factura.ID_CLIENTE,factura.FECHA_FACTURA, cliente.APELLIDO, cliente.NOMBRE, cliente.CUIT FROM factura, cliente WHERE cliente.ID_USUARIO = %s AND factura.ID_USUARIO = %s AND cliente.ID = factura.ID_CLIENTE;',(id_user, id_user))
     data = cur.fetchall()
     facturaList = []
     for row in data:
-        objFactura = Factura(row)
+        objFactura = Facturas_detalladas(row)
         facturaList.append(objFactura.to_json())
     return jsonify({"facturas" : facturaList})

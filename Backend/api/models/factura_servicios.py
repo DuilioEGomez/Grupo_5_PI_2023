@@ -38,19 +38,52 @@ class Factura_servicios():
     
     def factura_servicio_existe(id_factura):
         cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM factura_servicios WHERE factura_servicios.ID_FACTURA = %s;',(id_factura,))
+        cur.execute('SELECT * FROM factura WHERE factura.ID = %s;',(id_factura,))
         cur.fetchall()
         return cur.rowcount > 0
-    
+
     def create_factura_servicios(data):
-        if Factura_servicios.check_data_schema(data):
-            if not Factura_servicios.factura_servicio_existe(data["id_factura"]):
-                raise DBError("Error creating factura productos - la factura no existe")
-            cur = mysql.connection.cursor()
-            cur.execute('INSERT INTO factura_servicios (ID_FACTURA, ID_SERVICIO, CANTIDAD, PRECIO_SERVICIO) VALUES (%s, %s, %s, %s);',(data["id_factura"], data["id_servicio"], data["cantidad"], data["precio_servicio"]))
-            mysql.connection.commit()
-            return Factura_servicios((data["id_factura"], data["id_servicio"], data["cantidad"], data["precio_servicio"])).to_json()
+        if "alta servicios" in data and isinstance(data["alta servicios"], list):
+            factura_id = data.get("id_factura")
+
+            for item in data["alta servicios"]:
+                # Agrega el campo "id_factura" al diccionario
+                item["id_factura"] = factura_id
+
+                if Factura_servicios.check_data_schema(item):
+                    # Verifica si la factura producto no existe
+                    if not Factura_servicios.factura_servicio_existe(item["id_factura"]):
+                        raise DBError("Error creating factura servicios - la factura no existe")
+
+                    # Crear una instancia de la clase Factura_productos
+                    factura_servicio_instance = Factura_servicios((
+                        item["id_factura"],
+                        item["id_servicio"],
+                        item["cantidad"],
+                        item["precio_servicio"]
+                    ))
+
+                    # Inserta en la base de datos
+                    cur = mysql.connection.cursor()
+                    cur.execute('INSERT INTO factura_servicios (ID_FACTURA, ID_SERVICIO, CANTIDAD, PRECIO_SERVICIO) VALUES (%s, %s, %s, %s);',(item["id_factura"], item["id_servicio"], item["cantidad"], item["precio_servicio"]))
+                    mysql.connection.commit()
+
+                    # Llama al método to_json en la instancia para obtener el JSON resultante
+            return factura_servicio_instance.to_json()
+
+            #raise DBError("Error creating factura servicio - no row inserted")
+
         raise TypeError("Error creating factura servicio - wrong data schema")
+
+    # def create_factura_servicios(data):
+    #     if Factura_servicios.check_data_schema(data):
+    #         if not Factura_servicios.factura_servicio_existe(data["id_factura"]):
+    #             raise DBError("Error creating factura productos - la factura no existe")
+    #         cur = mysql.connection.cursor()
+    #         cur.execute('INSERT INTO factura_servicios (ID_FACTURA, ID_SERVICIO, CANTIDAD, PRECIO_SERVICIO) VALUES (%s, %s, %s, %s);',(data["id_factura"], data["id_servicio"], data["cantidad"], data["precio_servicio"]))
+    #         mysql.connection.commit()
+    #         return Factura_servicios((data["id_factura"], data["id_servicio"], data["cantidad"], data["precio_servicio"])).to_json()
+    #     raise TypeError("Error creating factura servicio - wrong data schema")
 
     def update_factura_servicios(id_factura, data):
         if Factura_servicios.check_data_schema(data):

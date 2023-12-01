@@ -15,9 +15,11 @@ class Servicios_factura():
         self._apellido = row[12]
         self._cuit = row[13]
         self._activo = row[14]
-        self._id_usuario = row[15]
-        self._id_cliente = row[16]
-        self._fecha_factura = row[17]
+        self._id = row[15]
+        self._id_usuario = row[16]
+        self._id_cliente = row[17]
+        self._fecha_factura = row[18]
+
     def to_json(self):
         return {
             "apellido" : self._apellido,
@@ -26,6 +28,6 @@ class Servicios_factura():
             "precio servicio" : self._precio_servicio,
             "cantidad" : self._cantidad,
             "cuit" : self._cuit,
-            "fecha factura" : self._fecha_factura,
+            "fecha_factura" : self._fecha_factura,
             "id_servicio" : self._id_servicio
         }
