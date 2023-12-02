@@ -24,8 +24,8 @@ class Servicios_factura():
         return {
             "apellido" : self._apellido,
             "nombre" : self._nombre,
-            "nombre servicio" : self._nombre_servicio,
-            "precio servicio" : self._precio_servicio,
+            "nombre_servicio" : self._nombre_servicio,
+            "precio_servicio" : self._precio_servicio,
             "cantidad" : self._cantidad,
             "cuit" : self._cuit,
             "fecha_factura" : self._fecha_factura,

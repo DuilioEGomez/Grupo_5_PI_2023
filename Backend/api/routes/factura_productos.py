@@ -49,9 +49,13 @@ def delete_factura_productos(id_user, id_factura, id_producto):
 @user_resources
 @factura_resources
 def get_total_factura_producto(id_user, id_factura):
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT factura_productos.ID_FACTURA, SUM(factura_productos.CANTIDAD * factura_productos.PRECIO_PRODUCTO) AS TOTAL_FACTURA FROM factura_productos WHERE factura_productos.ID_FACTURA= %s GROUP BY factura_productos.ID_FACTURA;',(id_factura,))
-    data = cur.fetchall()
-    for row in data:
-        objFactura_productos_total = Factura_productos_total(row)
-    return jsonify({"total factura productos" : objFactura_productos_total.to_json()})
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT factura_productos.ID_FACTURA, SUM(factura_productos.CANTIDAD * factura_productos.PRECIO_PRODUCTO) AS TOTAL_FACTURA FROM factura_productos WHERE factura_productos.ID_FACTURA= %s GROUP BY factura_productos.ID_FACTURA;',(id_factura,))
+        data = cur.fetchall()
+        for row in data:
+            objFactura_productos_total = Factura_productos_total(row)
+        #return jsonify({"total factura productos" : objFactura_productos_total.to_json()})
+        return jsonify({"total factura productos": objFactura_productos_total.to_json()}), 200
+    except Exception as e:
+        return jsonify({"message": e.args[0]}), 400

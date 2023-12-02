@@ -44,8 +44,8 @@ class Factura():
      
      def crear_factura(data):
         if Factura.check_data_schema(data):
-            if Factura.factura_existe(data["id_usuario"], data["id_cliente"], data["fecha_factura"]):
-                raise DBError("Error, La factura ya existe")
+            #if Factura.factura_existe(data["id_usuario"], data["id_cliente"], data["fecha_factura"]):
+             #   raise DBError("Error, La factura ya existe")
 
             id_usuario = data["id_usuario"]
             id_cliente = data["id_cliente"]
