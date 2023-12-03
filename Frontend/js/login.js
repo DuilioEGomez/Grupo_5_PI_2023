@@ -8,7 +8,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     
     const credentials = btoa(`${username}:${password}`);
 
-    fetch('http://127.0.0.1:5106/login', {
+    fetch('http://127.0.0.1:5106/login',{
         method: 'POST',
         headers: {
             'Authorization': `Basic ${credentials}`

@@ -2,18 +2,25 @@
 const h1Elemento = document.querySelector('.main-header h1');
 const username = localStorage.getItem('username');
 
+
+
 var h1_vivo = '';
 if (username) {
     h1Elemento.textContent = `Dashboard ${username}`;
 } else {
     h1Elemento.textContent = 'Grupo 5 - Proyecto Informatico - UPSO 2023';
 }
-
+const columnOrderHistorial = ['apellido', 'nombre', 'cuit', 'fecha factura', 'nombre_producto', 'precio_producto', 'cantidad'];
+const columnOrderStock = ['nombre_producto','precio','proveedor', 'proveedor_email','stock_disponible', 'alerta_stock','id','id_usuario'];
+const columnOrderRankingProductos = ['nombre producto', 'precio producto','total cantidad', 'producto_id'];
+const columnOrderRankingServicios = ['nombre servicio','precio servicio','total_cantidad','servicio_id'];
+const columnOrderRankingClientes = ['apellido', 'nombre','ranking_cliente', 'id'];
 // Stock
 document.getElementById('stockButton').addEventListener('click', function() {
 
     const id = localStorage.getItem('id');
     const token = localStorage.getItem('token');
+    
 
     fetch(`http://127.0.0.1:5106/user/${id}/stock`, {
         headers: {
@@ -25,7 +32,7 @@ document.getElementById('stockButton').addEventListener('click', function() {
     .then(data => {
         console.log('Datos de Stock:', data);
         h1_vivo = 'Stock';
-        construirTabla(data["stock"]);
+        construirTabla(data["stock"], columnOrderStock);
         contenedor1.classList.remove('historial');
         contenedor1.classList.remove('ranking_productos');
         contenedor1.classList.remove('ranking_servicios');
@@ -56,7 +63,7 @@ document.getElementById('rankingProductoButton').addEventListener('click', funct
 
             // Llama a la función para construir la tabla
             h1_vivo = 'Ranking por Productos';
-            construirTabla(data["ranking productos"]);
+            construirTabla(data["ranking productos"], columnOrderRankingProductos);
 
             contenedor1.classList.remove('historial');
             contenedor1.classList.remove('stock');
@@ -87,7 +94,7 @@ document.getElementById('rankingServicioButton').addEventListener('click', funct
 
             // Llama a la función para construir la tabla
             h1_vivo = 'Ranking por Servicios';
-            construirTabla(data["ranking servicios"]);
+            construirTabla(data["ranking servicios"], columnOrderRankingServicios);
             contenedor1.classList.remove('historial');
             contenedor1.classList.remove('stock');
             contenedor1.classList.remove('ranking_productos');
@@ -119,7 +126,7 @@ document.getElementById('rankingClienteButton').addEventListener('click', functi
         console.log('Ranking por Cliente:', data);
 
         h1_vivo = 'Ranking Clientes';
-        construirTabla(data["ranking clientes"]);
+        construirTabla(data["ranking clientes"], columnOrderRankingClientes);
         contenedor1.classList.remove('ranking_productos');
         contenedor1.classList.remove('stock');
         contenedor1.classList.remove('ranking_servicios');
@@ -131,7 +138,7 @@ document.getElementById('rankingClienteButton').addEventListener('click', functi
       })
       .catch(error => console.error('Error en la solicitud:', error));
   });
-
+// Historial
 document.getElementById('historialVentasButton').addEventListener('click', function() {
     
     const id = localStorage.getItem('id');
@@ -148,7 +155,7 @@ document.getElementById('historialVentasButton').addEventListener('click', funct
         console.log('Historial de Ventas:', data);
 
         h1_vivo = 'Historial';
-        construirTabla(data["historial"]);
+        construirTabla(data["historial"], columnOrderHistorial);
         contenedor1.classList.remove('ranking_productos');
         contenedor1.classList.remove('stock');
         contenedor1.classList.remove('ranking_servicios');
@@ -164,7 +171,7 @@ document.getElementById('historialVentasButton').addEventListener('click', funct
   });
 
 
-function construirTabla(data) {
+function construirTabla(data, columnOrder, mostrarBoton = false) {
     const contenedor1 = document.getElementById('contenedor1');
 
     // Limpia el contenedor
@@ -172,31 +179,49 @@ function construirTabla(data) {
     const h1_carga = document.createElement('h1');
     h1_carga.innerHTML = h1_vivo;
     
-    
-
     // Crea la tabla
     const table = document.createElement('table');
-    // Lista de claves a excluir del objeto data
-    const excludedKeys = ["id", "id_usuario", "id_servicio"];
 
+    // Crea la fila de encabezado según el orden deseado
     const headerRow = table.insertRow(0);
-    Object.keys(data[0]).forEach(key => {
-        if (!excludedKeys.includes(key)) {
-            const headerCell = headerRow.insertCell();
-            headerCell.textContent = key;
-        }
+    columnOrder.forEach(column => {
+        const headerCell = headerRow.insertCell();
+        headerCell.textContent = column;
     });
 
-    // Itera en data y va creando la tabla
+    // Agrega la columna adicional para el botón solo si mostrarBoton es true
+    if (mostrarBoton) {
+        const headerCellBoton = headerRow.insertCell();
+        headerCellBoton.textContent = 'Acciones';
+    }
+
+    // Itera en data y va creando la tabla según el orden deseado
     data.forEach(item => {
         const row = table.insertRow();
-        Object.keys(item).forEach(key => { 
-            if (!excludedKeys.includes(key)) {
-                const cell = row.insertCell();
-                cell.textContent = item[key];
-            }
+        columnOrder.forEach(column => {
+            const cell = row.insertCell();
+            cell.textContent = item[column];
         });
+        
+        // Agrega el botón "Ver Detalle" solo si mostrarBoton es true
+        if (mostrarBoton) {
+            const botonDetalle = document.createElement('button');
+            botonDetalle.textContent = 'Ver Detalle';
+            botonDetalle.addEventListener('click', function() {
+                
+                console.log('Detalle factura ID = :', item.id);
+                verDetalle(item.id);
+        }
+            );
+            const cellBoton = row.insertCell();
+            cellBoton.appendChild(botonDetalle);
+        }
+
+        
     });
+
+        // Crea la fila de encabezado según el orden deseado
+
 
     // Agrega la tabla al contenedor
 
@@ -247,8 +272,9 @@ function cargarClientes() {
         inputCuitNuevo.placeholder = 'CUIT';
         btnCrearCliente.textContent = 'Crear Cliente';
            
-        contenedor1.appendChild(inputNombreNuevo);
         contenedor1.appendChild(inputApellidoNuevo);
+        contenedor1.appendChild(inputNombreNuevo);
+        
         contenedor1.appendChild(inputCuitNuevo);
         contenedor1.appendChild(btnCrearCliente);
     
@@ -431,22 +457,10 @@ btnCrearCliente.addEventListener('click', function() {
     .catch(error => console.error('Error al Crear Cliente:', error));
 });
 
+document.getElementById('cerrarSesion').addEventListener('click', function () {
+    localStorage.removeItem('id');
+    localStorage.removeItem('token');
+    alert(`Se ha Cerrado su Sesion`);
+    window.location.href = 'Login.html';    
 
-//Facturas del usuario X
-document.getElementById('facturasButton').addEventListener('click', function() {
-
-    const id = localStorage.getItem('id');
-    const token = localStorage.getItem('token');
-
-    fetch(`http://127.0.0.1:5106/user/${id}/facturas`, {
-        headers: {
-            'user-id': id,
-            'x-access-token': token
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Datos de las faturas del usuario X:', data);
-    })
-    .catch(error => console.error('Error en la solicitud:', error));
-});
+})

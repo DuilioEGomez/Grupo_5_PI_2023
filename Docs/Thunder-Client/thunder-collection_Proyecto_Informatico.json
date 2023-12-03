@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Proyecto_Informatico",
-    "dateExported": "2023-11-28T12:34:09.585Z",
+    "dateExported": "2023-12-03T03:41:55.909Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -64,11 +64,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "Todas las facturas del usuario X",
-            "url": "/user/1/facturas",
+            "url": "/user/1/factura/58",
             "method": "GET",
             "sortNum": 30000,
             "created": "2023-10-28T10:36:04.503Z",
-            "modified": "2023-11-05T23:56:37.552Z",
+            "modified": "2023-12-02T18:18:58.904Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -77,6 +77,29 @@
                 {
                     "name": "x-access-token",
                     "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA3MDA0NTI5fQ.A-lb7Su4OKakTjZtA_d_VASsZioi06DOYdRkNQZ_LcU"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b3d06392-d50c-4cda-b39d-0acdc90f0421",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Todos los Servicios del Usuario X",
+            "url": "/user/1/servicios",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-11-28T18:33:36.525Z",
+            "modified": "2023-11-28T22:39:28.521Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4OTcyNDMyfQ.Bjp1sshJaCCtqNK92n6fzu751obkOZqDsIojZaWc6qU"
                 }
             ],
             "params": [],
@@ -109,12 +132,12 @@
             "_id": "d2920b60-88ed-4f6d-a8b7-cb4ce1e3224a",
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
-            "name": "Todos los productos de la factura Y del usuario X",
-            "url": "user/1/factura/20",
+            "name": "Todos los detalles de la factura Y del usuario X",
+            "url": "user/1/factura/48",
             "method": "GET",
             "sortNum": 60000,
             "created": "2023-10-30T01:48:19.441Z",
-            "modified": "2023-11-06T11:15:20.789Z",
+            "modified": "2023-12-02T16:26:41.409Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -202,11 +225,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "Ranking Servicios por Usuario",
-            "url": "/user/1/servicios",
+            "url": "/user/1/ranking_servicios",
             "method": "GET",
             "sortNum": 95000,
             "created": "2023-11-08T19:46:11.432Z",
-            "modified": "2023-11-28T00:38:45.074Z",
+            "modified": "2023-11-28T18:18:36.268Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -229,7 +252,7 @@
             "method": "POST",
             "sortNum": 100000,
             "created": "2023-11-06T13:41:37.284Z",
-            "modified": "2023-11-27T09:36:39.681Z",
+            "modified": "2023-12-02T18:24:00.330Z",
             "headers": [
                 {
                     "name": "Content-Type",
@@ -247,7 +270,7 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre\": \"ASpen\",\n  \"apellido\": \"Musica\",\n  \"cuit\": 1023\n}",
+                "raw": "{\n  \"nombre\": \"Rock & Pop CABA\",\n  \"apellido\": \"FM\",\n  \"cuit\": 1095911\n}",
                 "form": []
             },
             "tests": []
@@ -293,7 +316,7 @@
             "method": "POST",
             "sortNum": 120000,
             "created": "2023-11-13T17:44:18.599Z",
-            "modified": "2023-11-14T10:12:46.661Z",
+            "modified": "2023-12-02T18:24:21.865Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -311,7 +334,7 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n \"id_usuario\" : 1,\n \"id_cliente\" : 30,\n \"fecha_factura\" : \"2023-11-13\"\n}",
+                "raw": "{\n \"id_usuario\" : 1,\n \"id_cliente\" : 77,\n \"fecha_factura\" : \"2023-11-30\"\n}",
                 "form": []
             },
             "tests": []
@@ -376,11 +399,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "Nuevo Producto a la Factura F del Usuario X",
-            "url": "/user/1/factura/15/factura_productos",
+            "url": "/user/1/factura/77/factura_productos",
             "method": "POST",
             "sortNum": 160000,
             "created": "2023-11-15T00:55:01.491Z",
-            "modified": "2023-11-22T00:54:41.869Z",
+            "modified": "2023-12-02T18:24:32.488Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -398,7 +421,7 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"id_producto\" : 26,\n  \"cantidad\" : 3,\n  \"precio_producto\" : 91500.99\n}",
+                "raw": "{ \"alta productos\" : [\n  {\n  \"id_producto\" : 1,\n  \"cantidad\" : 2,\n  \"precio_producto\" : 750000.99\n},\n{\n  \"id_producto\" : 2,\n  \"cantidad\" : 1,\n  \"precio_producto\" : 1700000.99\n},\n{\n  \"id_producto\" : 11,\n  \"cantidad\" : 1,\n  \"precio_producto\" : 3750000.99\n},\n{\n  \"id_producto\" : 25,\n  \"cantidad\" : 6,\n  \"precio_producto\" : 105900.99\n}\n]\n}\n",
                 "form": []
             },
             "tests": []
@@ -586,7 +609,7 @@
             "method": "PUT",
             "sortNum": 220000,
             "created": "2023-11-20T16:19:23.985Z",
-            "modified": "2023-11-20T16:33:31.874Z",
+            "modified": "2023-12-02T19:43:59.747Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -604,7 +627,7 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre_producto\" : \"Microfono Dinamico SHURE SM58\",\n  \"stock_disponible\" : 25,\n  \"precio\" : 8799.99,\n  \"proveedor\" : \"SHURE\",\n  \"proveedor_email\" : \"sales@shure.com\",\n  \"alerta_stock\" : 6\n}",
+                "raw": "{\n  \"nombre_producto\" : \"Microfono Dinamico SHURE SM58\",\n  \"stock_disponible\" : 24,\n  \"precio\" : 8799.99,\n  \"proveedor\" : \"SHURE\",\n  \"proveedor_email\" : \"sales@shure.com\",\n  \"alerta_stock\" : 6\n}",
                 "form": []
             },
             "tests": []
@@ -637,11 +660,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "Create New Servicio S en  Factura F Factura_Servicios",
-            "url": "/user/1/factura/21/factura_servicios",
+            "url": "/user/1/factura/28/factura_servicios",
             "method": "POST",
             "sortNum": 250000,
             "created": "2023-11-23T00:22:39.504Z",
-            "modified": "2023-11-23T00:53:18.619Z",
+            "modified": "2023-11-30T17:33:57.314Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -724,11 +747,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "Total Factura Productos F del Usuario X",
-            "url": "/user/1/factura_productos_total/15",
+            "url": "/user/1/factura_productos_total/66",
             "method": "GET",
             "sortNum": 280000,
             "created": "2023-11-28T12:15:47.185Z",
-            "modified": "2023-11-28T12:16:45.770Z",
+            "modified": "2023-12-02T19:30:30.074Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -747,11 +770,11 @@
             "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
             "containerId": "",
             "name": "Total factura Servicio F del Usuario X",
-            "url": "/user/1/factura_servicios_total/24",
+            "url": "/user/1/factura_servicios_total/66",
             "method": "GET",
             "sortNum": 290000,
             "created": "2023-11-28T12:29:42.943Z",
-            "modified": "2023-11-28T12:33:44.994Z",
+            "modified": "2023-12-02T19:30:41.911Z",
             "headers": [
                 {
                     "name": "user-id",
@@ -760,6 +783,57 @@
                 {
                     "name": "x-access-token",
                     "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA4OTQ5Nzc5fQ.q_aOlDOtclyMbNydG-NEZyYIb6xg-SCerFY4AZUrP8g"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f5f2356d-cc9e-48d4-99a9-02ab0bf5a3a9",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Nuevo Servicio a la Factura F del Usuario X",
+            "url": "/user/1/factura/77/factura_servicios",
+            "method": "POST",
+            "sortNum": 300000,
+            "created": "2023-11-30T21:16:57.040Z",
+            "modified": "2023-12-02T18:25:49.081Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA5MTU1MDY2fQ.1cGDCw96tslhTHAdhx4EAxlolAVSn8LTnXBiUKELOPs"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{ \"alta servicios\" : [\n  {\n  \"id_servicio\" : 11,\n  \"cantidad\" : 2,\n  \"precio_servicio\" : 3800.00\n},\n{\n  \"id_servicio\" : 16,\n  \"cantidad\" : 1,\n  \"precio_servicio\" : 75989.00\n},\n{\n  \"id_servicio\" : 5,\n  \"cantidad\" : 3,\n  \"precio_servicio\" : 7900.00\n}\n\n\n]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b4e49a93-bc79-4e81-8d29-a29f3c1a032a",
+            "colId": "b605f14c-5653-4e26-915f-82807cc7d701",
+            "containerId": "",
+            "name": "Get Producto por ID",
+            "url": "/user/1/producto/1",
+            "method": "GET",
+            "sortNum": 310000,
+            "created": "2023-12-02T19:56:40.440Z",
+            "modified": "2023-12-02T19:57:42.736Z",
+            "headers": [
+                {
+                    "name": "user-id",
+                    "value": "1"
+                },
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzA5MzIzMDMwfQ.95sWzRsfcm3Q0LKSpNkY0GtVOANrMzzIuuR2LWRZRLI"
                 }
             ],
             "params": [],

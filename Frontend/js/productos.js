@@ -69,7 +69,7 @@ function cargarProductos() {
         headerAlertaStock.textContent = 'Alerta Stock';
         headerAcciones.textContent = 'Acciones';
 
-        //iteramos en clientes e insertamos los datos
+        
         data.stock.forEach(producto => {
             const row = table.insertRow();
             const cellNombreProducto = row.insertCell(0);
@@ -130,13 +130,13 @@ function cargarProductos() {
             btnAplicar.textContent = 'Aplicar';
             btnAplicar.addEventListener('click', () => {
                 
-                const updatedData = {
+                const updatedDataP = {
                     nombre_producto: inputNombreProducto.value,
                     precio: parseFloat(inputPrecio.value),
                     proveedor: inputProveedor.value,
                     proveedor_email: inputProveedorEmail.value,
-                    stock_disponible: parseInt(inputStock.value),
-                    alerta_stock: parseInt(inputAlertaStock.value),
+                    stock_disponible: parseInt(inputStock.value, 10),
+                    alerta_stock: parseInt(inputAlertaStock.value, 10),
                 };
 
                 fetch(`http://127.0.0.1:5106/user/${id}/producto/${producto.id}`, {
@@ -146,11 +146,12 @@ function cargarProductos() {
                         'user-id': id,
                         'x-access-token': token
                     },
-                    body: JSON.stringify(updatedData)
+                    body: JSON.stringify(updatedDataP)
                 })
                 .then(response => response.json())
                 .then(data => {
-                    console.log('Response from Modificar:', data)
+                    console.log("producto ID: ", id);
+                    console.log('Response from Modificar:', data);
                     cargarProductos()
                 
                 })
@@ -158,12 +159,12 @@ function cargarProductos() {
                 .catch(error => console.error('Error al Modificar:', error));
 
                 // Actualizamos los campos
-                cellNombreProducto.textContent = updatedData.nombre_producto;
-                cellPrecio.textContent = updatedData.precio;
-                cellProveedor.textContent = updatedData.proveedor;
-                cellProveedorEmail.textContent = updatedData.proveedor_email;
-                cellStock.textContent = updatedData.stock_disponible;
-                cellAlertaStock.textContent = updatedData.alerta_stock;
+                cellNombreProducto.textContent = updatedDataP.nombre_producto;
+                cellPrecio.textContent = updatedDataP.precio;
+                cellProveedor.textContent = updatedDataP.proveedor;
+                cellProveedorEmail.textContent = updatedDataP.proveedor_email;
+                cellStock.textContent = updatedDataP.stock_disponible;
+                cellAlertaStock.textContent = updatedDataP.alerta_stock;
                                 
                 // Quitamos los campos de entrada y el boton "Aplicar"
                 cellAcciones.innerHTML = '';
@@ -223,12 +224,20 @@ btnCrearProducto.addEventListener('click', function() {
 // function crearProducto () {
     const id = localStorage.getItem('id');
     const token = localStorage.getItem('token');
-    
+    //const precioString = inputPrecioNuevo.value;
+    //let precioEditado = precioString;
+    //if (Number.isInteger(precioEditado)) {
+        // Agrega los ceros decimales manualmente
+      //  precioEditado = parseFloat(precioEditado.toFixed(2));
+      //}    
+
+    //console.log("precio editado", precioEditado);
     const nuevoProducto = {
         "id_usuario" : parseInt(id,10),
         "nombre_producto" : inputNombreProductoNuevo.value,
         "stock_disponible" : parseInt(inputStockNuevo.value,10),
         "precio" : parseFloat(parseFloat(inputPrecioNuevo.value).toFixed(2)),
+        //"precio" : precioEditado,
         "proveedor" : inputProveedorNuevo.value,
         "proveedor_email" : inputProveedorEmailNuevo.value,
         "alerta_stock" : parseInt(inputAlertaStockNuevo.value,10)

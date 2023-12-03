@@ -117,25 +117,25 @@ footer {
 }
 
 .stock{
-    background-color: gray;
+    background-color: lightcyan;
     padding-top: 10px;
 }
 .historial{
-    background-color: orange;
+    background-color: lightgoldenrodyellow;
     padding-top: 10px;
 }
 
 .ranking_productos{
-    background-color: violet;
+    background-color: lightgrey;
     padding-top: 10px;
 }
 
 .ranking_servicios{
-    background-color: cyan;
+    background-color: lightskyblue;
     padding-top: 10px;
 }
 .ranking_clientes{
-    background-color: lightcoral;
+    background-color: lightpink;
     padding-top: 10px;
 }
 .contenedor{

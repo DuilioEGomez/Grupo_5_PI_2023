@@ -74,7 +74,7 @@ class Servicio():
             
     def get_servicio_by_ID(id_servicio):
         cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM servicio WHERE servicio.ID = %s',(id_servicio,))
+        cur.execute('SELECT * FROM servicio WHERE servicio.ID = %s AND servicio.activo = 1',(id_servicio,))
         data = cur.fetchall()
         if cur.rowcount > 0:
             return Servicio(data[0]).to_json()

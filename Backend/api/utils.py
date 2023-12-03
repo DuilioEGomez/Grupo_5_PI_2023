@@ -1,5 +1,6 @@
 from functools import wraps
 from flask import request, jsonify
+import datetime
 import jwt
 from api import app
 from api.db.db import mysql
@@ -46,13 +47,8 @@ def client_resource(func):
         id_cliente = kwargs['id_client']
         cur = mysql.connection.cursor()
         cur.execute('SELECT * FROM cliente WHERE cliente.ID = %s and cliente.ID_USUARIO = %s;',(id_cliente, id_usuario)) 
-        #data = cur.fetchone()
+        
         if not cur.rowcount > 0:
-            # """print(data)"""
-            # consulta1 = data[0]
-            # consulta2 = data[1]
-            # user_id = request.headers['user-id']
-            # if cur.rowcount >
             return jsonify({"message": "No tiene permisos para acceder a este recurso"}), 401
         return func(*args, **kwargs)
     return decorated

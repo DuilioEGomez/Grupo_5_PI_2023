@@ -3,7 +3,6 @@ from api.db.db import DBError
 
 class Factura():
      schema = {
-        #"id" : int,
         "id_usuario" : int,
         "id_cliente" : int,
         "fecha_factura" : str
@@ -44,8 +43,6 @@ class Factura():
      
      def crear_factura(data):
         if Factura.check_data_schema(data):
-            if Factura.factura_existe(data["id_usuario"], data["id_cliente"], data["fecha_factura"]):
-                raise DBError("Error, La factura ya existe")
 
             id_usuario = data["id_usuario"]
             id_cliente = data["id_cliente"]
