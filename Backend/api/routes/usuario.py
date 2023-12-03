@@ -17,7 +17,7 @@ def login():
             
     """ Control: existe y coincide el usuario en la BD? """
     print(auth.username, auth.password)
-    
+    mysql = MySQL()
     cur = mysql.connection.cursor()
     #cur.execute('SELECT * FROM usuario WHERE nombre = `DG Broadcasting` AND password = `henry`', (auth.username, auth.password))
     cur.execute('SELECT * FROM usuario WHERE usuario.NOMBRE = %s AND usuario.PASSWORD = %s', (auth.username, auth.password))
