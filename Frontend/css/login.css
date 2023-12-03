@@ -1,80 +1,137 @@
+html {
+    height: 100%;
+}
 body{
-    background-color: aquamarine;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(#141e30, #243b55);
 }
 
-/* Estilos para el header */
-.main-header {
-    background-color: chartreuse;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.login-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
 }
 
-/* Estilos para el h1 dentro del header */
-h1 {
-    color: var(--color-blanco);
-    font-family: var(--fuente-principal);
-    font-size: xx-large;
-    margin-top: 0 px; /* Ajusta según sea necesario */
+.login-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
 }
 
-
-.main-menu{
-    height:680px; /*le pusimos altura predefinida para que se justifique el overflow-y utilizado en estilos iniciales y para que ademas al estar fixed ocupe el alto visible de la pantalla */
-    background-color:var(--color-fondo); /*color de fondo*/
-    position:fixed; /*Establezco posicion absolute en el contenedor para que pierda su posicion en el flujo y el main quede a continuacion del header(ya que el menu se despliega desde el costado) y poder utilizar la propiedad top para que quede por debajo del main header */
-    top:var(--header-height);/*Establezco la posicion de top del contenedor del menu luego del height de la cabecera*/    
-    transition: transform 0.3s ease-in-out; /*respuesta de la tranformacion*/
-    transform: translateX(-95%); /*el menu se encuentra escondido y solo se ve la barra de scroll*/
-    z-index: 1000; /*para que se vea por encima del main al desplegarse*/
+.login-box .user-box{
+    position: relative
 }
 
-.main-menu:hover{
-    transform:translateX(0%);/*cuando se pasa el mouse por encima se despliega el menu se translada la posicion en X*/
+.login-box .user-box input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
 }
 
-.menu-group{
-    padding:5px; /*padding de 5px*/
-    border-bottom-style: solid; /*pongo el borde inferior solido*/
-    border-bottom-color: var(--color-textos); /*color blanco*/
+.login-box .user-box label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
 }
 
-.menu-group ul {
-    list-style: none; /* Elimina los puntos de la lista */
-    margin: 0; /* Elimina el margen predeterminado de la lista */
-    padding: 0; /* Elimina el relleno predeterminado de la lista */
-}
-
-.menu-group>h2{
-    color:var(--color-textos); /*color de letra blanco para el h2*/
-    margin-bottom: 5px; /*margen inferior*/
-}
-
-.menu-group>a{
-    color:var(--color-textos); /*color de letra blanco*/
-    display: flex; /*display flex para ver los span uno al lado del otro*/
-    text-decoration: none; /*sacamos el subrayado de los a*/
-}
-
-.menu-group>a:hover{
-    background-color: #1a9e88; /*se agrega el hover para que cuando pase el raton por encima cambie de color el fondo*/
-    cursor: pointer; /*se cambia para poner una mano cuando va a seleccionar alguno de ellos */
-}
-
-.menu-group>a>span{
-    margin-right: 5px; /*le doy margen a los span en general para que esten separados*/
-    margin-bottom: 5px;
-}
-
-.menu-group>a>span:nth-child(2){
-    margin-top: 5px; /*coloco el segundo span para que se vea como quiero*/
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label{
+    top: -20px;
+    left: 0;
+    color: #03e9f4;
+    font-size: 12px;
 }
 
 
-/*ESTILOS DEL MAIN*/
-
-main{
-    margin-top: var(--header-height); /*debajo del header*/
-    margin-left:20px; /*a la derecha del scroll desplegable*/
-    font-family: 'Ubuntu',Arial, Helvetica, sans-serif /*Utilizo la fuente descargada y un par de respaldo en caso de que el explorador no reconozca la fuente*/
+.login-box .custom-button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #03e9f4;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
+
+.login-box .custom-button:hover {
+    background: #03e9f4;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 100px #03e9f4;              
+}
+
+.login-box .custom-button span {
+    position: absolute;
+    display: block;
+}
+
+.login-box .custom-button span:nth-child(1),
+.login-box .custom-button span:nth-child(2),
+.login-box .custom-button span:nth-child(3),
+.login-box .custom-button span:nth-child(4) {
+    position: absolute;
+    display: block;
+    background: linear-gradient(90deg, transparent, #03e9f4);
+    width: 100%;
+    height: 2px;
+    animation: custom-btn-anim 1s linear infinite;
+}
+
+.login-box .custom-button span:nth-child(2) {
+    top: 0;
+    left: 100%;
+    animation-delay: .25s;
+}
+
+.login-box .custom-button span:nth-child(3) {
+    bottom: 0;
+    right: 100%;
+    animation-delay: .5s;
+}
+
+.login-box .custom-button span:nth-child(4) {
+    bottom: 100%;
+    left: 0;
+    animation-delay: .75s;
+}
+
+@keyframes custom-btn-anim {
+    0% {
+        transform: translateX(-100%);
+    }
+    50%, 100% {
+        transform: translateX(100%);
+    }
+}
+
