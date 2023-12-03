@@ -457,22 +457,10 @@ btnCrearCliente.addEventListener('click', function() {
     .catch(error => console.error('Error al Crear Cliente:', error));
 });
 
+document.getElementById('cerrarSesion').addEventListener('click', function () {
+    localStorage.removeItem('id');
+    localStorage.removeItem('token');
+    alert(`Se ha Cerrado su Sesion`);
+    window.location.href = 'Login.html';    
 
-//Facturas del usuario X
-document.getElementById('facturasButton').addEventListener('click', function() {
-
-    const id = localStorage.getItem('id');
-    const token = localStorage.getItem('token');
-
-    fetch(`http://127.0.0.1:5106/user/${id}/facturas`, {
-        headers: {
-            'user-id': id,
-            'x-access-token': token
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Datos de las faturas del usuario X:', data);
-    })
-    .catch(error => console.error('Error en la solicitud:', error));
-});
+})
