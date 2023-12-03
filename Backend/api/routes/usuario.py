@@ -1,4 +1,6 @@
 from api import app
+from flask_mysqldb import MySQL
+from flask import Flask
 from flask import request, jsonify
 from api.db.db import mysql
 import jwt
@@ -8,14 +10,17 @@ import datetime
 def login():
     auth = request.authorization
     print(auth)
-
+    
     """ Control: existen valores para la autenticacion? """
     if not auth or not auth.username or not auth.password:
         return jsonify({"message": "No autorizado"}), 401       
             
     """ Control: existe y coincide el usuario en la BD? """
+    print(auth.username, auth.password)
+    
     cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM usuario WHERE nombre = %s AND password = %s', (auth.username, auth.password))
+    #cur.execute('SELECT * FROM usuario WHERE nombre = `DG Broadcasting` AND password = `henry`', (auth.username, auth.password))
+    cur.execute('SELECT * FROM usuario WHERE usuario.NOMBRE = %s AND usuario.PASSWORD = %s', (auth.username, auth.password))
     row = cur.fetchone()
 
     if not row:
