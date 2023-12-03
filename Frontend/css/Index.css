@@ -1,10 +1,10 @@
 body {
-    background-color: aquamarine;
+    background: linear-gradient(to right, #114357, #f29492);
 }
 
 /* Estilos para el header */
 .main-header {
-    background-color: chartreuse;
+    background: linear-gradient(to top, #70e1f5, #ffd194);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,6 +33,8 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    color: white;
+    font-size: medium;
 }
 
 .menu-group button {
@@ -40,43 +42,6 @@ h1 {
     margin-bottom: 8px; /* Ajusta según tu preferencia para agregar espacio entre los botones */
 }
 
-/* 
-.menu-group {
-    padding: 5px;
-    border-bottom-style: solid;
-    border-bottom-color: var(--color-textos);
-}
-
-.menu-group ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.menu-group > h2 {
-    color: var(--color-textos);
-    margin-bottom: 5px;
-}
-
-.menu-group > a {
-    color: var(--color-textos);
-    display: flex;
-    text-decoration: none;
-}
-
-.menu-group > a:hover {
-    background-color: #1a9e88;
-    cursor: pointer;
-}
-
-.menu-group > a > span {
-    margin-right: 5px;
-    margin-bottom: 5px;
-}
-
-.menu-group > a > span:nth-child(2) {
-    margin-top: 5px;
-} */
 
 /* ESTILOS DEL MAIN */
 main {
@@ -85,11 +50,185 @@ main {
     font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
 }
 
+/*Boton clientes*/
+#clientesButton {
+    background-color: #4caf50; /* Color de fondo inicial */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agrega una transición a la propiedad background-color */
+  }
+  
+#clientesButton:hover {
+    background-color: #ff0000; /* Nuevo color de fondo al pasar el mouse */
+  }
+  
+/*Boton productos*/
+#productosButton {
+    background-color: #4caf50; /* Color de fondo inicial */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agrega una transición a la propiedad background-color */
+  }
+  
+#productosButton:hover {
+    background-color: #ff0000; /* Nuevo color de fondo al pasar el mouse */
+  }
+
+/*Boton ver facturas*/
+#verFacturasButton{
+  background-color: orange; /* Color de fondo inicial */
+  color: black; /* Color del texto */
+  padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+  border: none;
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Agrega una transición a la propiedad background-color */
+}
+
+#verFacturasButton:hover {
+  background-color: #ff0000; /* Nuevo color de fondo al pasar el mouse */
+  color : white;
+}
+
+
+#crearFacturasButton{
+  background-color: orange; /* Color de fondo inicial */
+  color: black; /* Color del texto */
+  padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+  border: none;
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Agrega una transición a la propiedad background-color */
+}
+
+#crearFacturasButton:hover {
+  background-color: #ff0000; /* Nuevo color de fondo al pasar el mouse */
+  color : white;
+}
+/*Boton Servicios*/
+#serviciosButton {
+    background-color: #4caf50; /* Color de fondo inicial */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agrega una transición a la propiedad background-color */
+  }
+  
+#serviciosButton:hover {
+    background-color: #ff0000; /* Nuevo color de fondo al pasar el mouse */
+  }
+/*Boton Facturas*/
+#facturasButton {
+    background-color: #4caf50; /* Color de fondo inicial */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agrega una transición a la propiedad background-color */
+  }
+  
+#facturasButton:hover {
+    background-color: #ff0000; /* Nuevo color de fondo al pasar el mouse */
+  }
+/*Boton Stock*/
+#stockButton {
+    background-color: #06c41f; /* Color de fondo inicial */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agrega una transición a la propiedad background-color */
+  }
+  
+#stockButton:hover {
+    background-color: #2d1b91; /* Nuevo color de fondo al pasar el mouse */
+  }
+/*Boton rancking por producto*/
+#rankingProductoButton {
+    background-color: #06c41f; /* Color de fondo inicial */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agrega una transición a la propiedad background-color */
+  }
+  
+#rankingProductoButton:hover {
+    background-color: #2d1b91; /* Nuevo color de fondo al pasar el mouse */
+  }
+/*Boton rancking por servicio*/
+#rankingServicioButton {
+    background-color: #06c41f; /* Color de fondo inicial */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agrega una transición a la propiedad background-color */
+  }
+  
+#rankingServicioButton:hover {
+    background-color: #2d1b91; /* Nuevo color de fondo al pasar el mouse */
+  }
+/*Boton rancking por cliente*/
+#rankingClienteButton {
+    background-color: #06c41f; /* Color de fondo inicial */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agrega una transición a la propiedad background-color */
+  }
+  
+#rankingClienteButton:hover {
+    background-color: #2d1b91; /* Nuevo color de fondo al pasar el mouse */
+  }
+/*Boton rancking por ventas*/
+#historialVentasButton {
+    background-color: #06c41f; /* Color de fondo inicial */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agrega una transición a la propiedad background-color */
+  }
+  
+#historialVentasButton:hover {
+    background-color: #2d1b91; /* Nuevo color de fondo al pasar el mouse */
+  }
+
+#cerrarSesion{
+  background-color: salmon; /* Color de fondo inicial */
+  color: black; /* Color del texto */
+  padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+  border: none;
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Agrega una transición a la propiedad background-color */
+}
+  
+#cerrarSesion:hover {
+  background-color: lightsalmon; /* Nuevo color de fondo al pasar el mouse */
+}
+
 /*aca comienza el footer*/
 footer {
     background-color: #333;
     color: #fff;
-    padding: 10px;
+    padding: 1px; /* Ajusta el padding según sea necesario */
     text-align: center;
     position: fixed;
     bottom: 0;
@@ -110,36 +249,222 @@ footer {
     font-size: 24px;
 }
 
-.clientes{
-    padding-right: 160px;
-    padding-top: 10px;
 
-}
 
-.stock{
-    background-color: lightcyan;
-    padding-top: 10px;
-}
-.historial{
-    background-color: lightgoldenrodyellow;
-    padding-top: 10px;
+/* Tablas clientes */
+.contenedor {
+  margin-left: 12%;
+  margin-top: 1%;
 }
 
-.ranking_productos{
-    background-color: lightgrey;
-    padding-top: 10px;
+#contenedor1 {
+  color: rgb(252, 235, 0);
+  border: 10px solid #913030;
+  border-radius: 5px;
+  margin-left: 160px;
 }
 
-.ranking_servicios{
-    background-color: lightskyblue;
-    padding-top: 10px;
+.contenedor.clientes {
+  max-height:78vh;
+  height: auto; /* Permite que la altura se ajuste automáticamente según el contenido */
+  overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más largo que el max-height */
 }
-.ranking_clientes{
-    background-color: lightpink;
-    padding-top: 10px;
+
+.contenedor.clientes table {
+  border-collapse: collapse;
+  width: 100%;
 }
-.contenedor{
-    margin-left: 160px;
-    margin-top: 10px;
-    
+
+.contenedor.clientes table tr {
+  border-bottom: 3px solid #2d1b91;
+}
+
+.contenedor.clientes table th,
+.contenedor.clientes table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.contenedor.clientes h1 {
+  text-align: center;
+}
+
+/* Tablas productos */
+.contenedor.productos {
+  margin-left: 12%;
+  margin-top: 1%;
+}
+
+#contenedor.productos {
+  color: rgb(252, 235, 0);
+  border: 10px solid #913030;
+  border-radius: 5px;
+}
+
+.contenedor.productos {
+  max-height:78vh;
+  height: auto; /* Permite que la altura se ajuste automáticamente según el contenido */
+  overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más largo que el max-height */
+}
+
+.contenedor.productos table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.contenedor.productos table tr {
+  border-bottom: 3px solid #2d1b91;
+}
+
+.contenedor.productos table th,
+.contenedor.productos table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.contenedor.historial {
+  margin-left: 12%;
+  margin-top: 1%;
+}
+
+.contenedor.historial {
+  color: rgb(252, 235, 0);
+  border: 10px solid #913030;
+  border-radius: 5px;
+}
+
+.contenedor.historial {
+  max-height:78vh;
+  height: auto; /* Permite que la altura se ajuste automáticamente según el contenido */
+  overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más largo que el max-height */
+}
+
+.contenedor.historial table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.contenedor.historial table tr {
+  border-bottom: 3px solid #2d1b91;
+}
+
+.contenedor.historial table th,
+.contenedor.historial table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.contenedor.historial h1 {
+  text-align: center;
+}
+
+.contenedor.ranking_clientes {
+  margin-left: 12%;
+  margin-top: 1%;
+}
+
+.contenedor.ranking_clientes {
+  color: rgb(252, 235, 0);
+  border: 10px solid #913030;
+  border-radius: 5px;
+}
+
+.contenedor.ranking_clientes {
+  max-height:78vh;
+  height: auto; /* Permite que la altura se ajuste automáticamente según el contenido */
+  overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más largo que el max-height */
+}
+
+.contenedor.ranking_clientes table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.contenedor.ranking_clientes table tr {
+  border-bottom: 3px solid #2d1b91;
+}
+
+.contenedor.ranking_clientes table th,
+.contenedor.ranking_clientes table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.contenedor.ranking_clientes h1 {
+  text-align: center;
+}
+
+/* Tabla Ver facturas*/
+
+.contenedor.facturas {
+  margin-left: 12%;
+  margin-top: 1%;
+}
+
+.contenedor.facturas {
+  color: rgb(252, 235, 0);
+  border: 10px solid #913030;
+  border-radius: 5px;
+}
+
+.contenedor.facturas {
+  max-height:78vh;
+  height: auto; /* Permite que la altura se ajuste automáticamente según el contenido */
+  overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más largo que el max-height */
+}
+
+
+.contenedor.facturas table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.contenedor.facturas table tr {
+  border-bottom: 3px solid #2d1b91;
+}
+
+.contenedor.facturas table th,
+.contenedor.facturas table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.contenedor.facturas h1 {
+  text-align: center;
+}
+
+/* Tabla servicios */
+.contenedor.servicios {
+  margin-left: 12%;
+  margin-top: 1%;
+}
+
+.contenedor.servicios {
+  color: rgb(252, 235, 0);
+  border: 10px solid #913030;
+  border-radius: 5px;
+}
+
+.contenedor.servicios {
+  max-height:78vh;
+  height: auto; /* Permite que la altura se ajuste automáticamente según el contenido */
+  overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más largo que el max-height */}
+
+.contenedor.servicios table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.contenedor.servicios table tr {
+  border-bottom: 3px solid #2d1b91;
+}
+
+.contenedor.servicios table th,
+.contenedor.servicios table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.contenedor.servicios h1 {
+  text-align: center;
 }
