@@ -4,7 +4,6 @@ from flask import jsonify
 
 class Cliente():
     schema = {
-        #"id" : int,
         "id_usuario" : int,
         "nombre" : str,
         "apellido" : str,

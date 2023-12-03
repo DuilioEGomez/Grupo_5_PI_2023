@@ -68,16 +68,13 @@ class Factura_productos():
             factura_id = data.get("id_factura")
 
             for item in data["alta productos"]:
-                # Agrega el campo "id_factura" al diccionario
                 item["id_factura"] = factura_id
 
                 if Factura_productos.check_data_schema(item):
-                    # Verifica si la factura producto no existe
                     if not Factura_productos.factura_producto_existe(item["id_factura"]):
                         raise DBError(
                             "Error creating factura productos - la factura no existe")
 
-                    # Crear una instancia de la clase Factura_productos
                     factura_producto_instance = Factura_productos((
                         item["id_factura"],
                         item["id_producto"],
@@ -85,18 +82,14 @@ class Factura_productos():
                         item["precio_producto"]
                     ))
 
-                    # Inserta en la base de datos
                     cur = mysql.connection.cursor()
                     cur.execute('INSERT INTO factura_productos (ID_FACTURA, ID_PRODUCTO, CANTIDAD, PRECIO_PRODUCTO) VALUES (%s, %s, %s, %s);', (
                         item["id_factura"], item["id_producto"], item["cantidad"], item["precio_producto"]))
                     mysql.connection.commit()
 
-                    #descuenta la cantidad al stock
                     stockActual = Producto.get_producto_by_ID(item['id_producto'])
                     
                     stock_update= {
-                        #"id" : stockActual['id'],
-                        #"id_usuario" : stockActual['id_usuario'],
                         "nombre_producto" : stockActual['nombre_producto'],
                         "stock_disponible" : (stockActual['stock_disponible']-item['cantidad']),
                         "precio" : stockActual['precio'],
@@ -118,16 +111,9 @@ class Factura_productos():
                     cur = mysql.connection.cursor()
                     cur.execute('UPDATE producto SET nombre_producto = %s, stock_disponible = %s, precio = %s , proveedor = %s, proveedor_email = %s, alerta_stock = %s WHERE producto.ID = %s AND producto.ID_USUARIO = %s AND producto.activo = 1;',(nombre_producto, stock_disponible, precio, proveedor, proveedor_email, alerta_stock, id_producto, id_usuario)) 
                     mysql.connection.commit()
-                    # if cur.rowcount > 0:
-                    #     return Producto.get_producto_by_ID(id_producto)
-                    # else:
-                    #     raise DBError("No se pudo actualizar el cliente")
-
-                    # Llama al método to_json en la instancia para obtener el JSON resultante
+                    
             return factura_producto_instance.to_json()
-
-        #raise DBError("Error creating factura producto - no row inserted")
-
+        
         raise TypeError("Error creating factura producto - wrong data schema")
 
     def update_factura_productos(id_factura, data):
