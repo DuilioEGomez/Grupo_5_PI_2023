@@ -3,8 +3,8 @@ Proyecto Final de la Materia Proyecto Informatico de la Carrera "Tecnicatura Uni
 
 Integrantes del Grupo 5 :
 
-Añinir, Lionel.
-Galvez, Juan Manuel Ignacio.
-Gomez, Duilio Enrique.
+Añinir, Lionel;
+Galvez, Juan Manuel Ignacio;
+Gomez, Duilio Enrique;
 Leal, Patricia Guillermina.
 
