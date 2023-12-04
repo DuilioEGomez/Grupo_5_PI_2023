@@ -233,7 +233,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    margin-left: 175px;
+    margin-left: 180px;
 }
 
 .redes-sociales {
@@ -433,6 +433,33 @@ footer {
 .contenedor.facturas h1 {
   text-align: center;
 }
+
+.contenedor.detalle_factura {
+  max-height:75vh;
+  height: auto; /* Permite que la altura se ajuste automáticamente según el contenido */
+  overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más largo que el max-height */
+}
+
+
+.contenedor.detalle_factura table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.contenedor.detalle_factura table tr {
+  border-bottom: 3px solid #2d1b91;
+}
+
+.contenedor.detalle_factura table th,
+.contenedor.detalle_factura table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.contenedor.detalle_factura h1 {
+  text-align: center;
+}
+
 
 /* Tabla servicios */
 .contenedor.servicios {
