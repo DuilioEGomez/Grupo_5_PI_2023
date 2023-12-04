@@ -233,6 +233,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    margin-left: 175px;
 }
 
 .redes-sociales {
@@ -265,7 +266,7 @@ footer {
 }
 
 .contenedor.clientes {
-  max-height:78vh;
+  max-height:75vh;
   height: auto; /* Permite que la altura se ajuste automáticamente según el contenido */
   overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más largo que el max-height */
 }
@@ -302,7 +303,7 @@ footer {
 }
 
 .contenedor.productos {
-  max-height:78vh;
+  max-height:75vh;
   height: auto; /* Permite que la altura se ajuste automáticamente según el contenido */
   overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más largo que el max-height */
 }
@@ -334,7 +335,7 @@ footer {
 }
 
 .contenedor.historial {
-  max-height:78vh;
+  max-height:75vh;
   height: auto; /* Permite que la altura se ajuste automáticamente según el contenido */
   overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más largo que el max-height */
 }
@@ -370,7 +371,7 @@ footer {
 }
 
 .contenedor.ranking_clientes {
-  max-height:78vh;
+  max-height:75vh;
   height: auto; /* Permite que la altura se ajuste automáticamente según el contenido */
   overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más largo que el max-height */
 }
@@ -408,7 +409,7 @@ footer {
 }
 
 .contenedor.facturas {
-  max-height:78vh;
+  max-height:75vh;
   height: auto; /* Permite que la altura se ajuste automáticamente según el contenido */
   overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más largo que el max-height */
 }
@@ -446,7 +447,7 @@ footer {
 }
 
 .contenedor.servicios {
-  max-height:78vh;
+  max-height:75vh;
   height: auto; /* Permite que la altura se ajuste automáticamente según el contenido */
   overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más largo que el max-height */}
 
